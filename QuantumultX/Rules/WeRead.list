@@ -6,3 +6,4 @@ HOST,weread.qq.com,REJECT
 HOST,i.weread.qq.com,REJECT
 HOST,ae.weixin.qq.com,REJECT
 HOST,ap-shanghai.cls.tencentcs.com,REJECT
+HOST,rmonitor.qq.com,REJECT
