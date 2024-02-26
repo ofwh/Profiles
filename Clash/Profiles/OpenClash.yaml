@@ -1,0 +1,178 @@
+port: 7890
+socks-port: 7891
+redir-port: 7892
+mixed-port: 7893
+tproxy-port: 7895
+allow-lan: true
+mode: rule
+log-level: info
+external-controller: 0.0.0.0:9090
+secret: ""
+bind-address: "*"
+ipv6: false
+dns:
+  enable: true
+  ipv6: false
+  prefer-h3: true
+  listen: 0.0.0.0:7874 # 这里是OpenClash配置，默认DNS由OpenWrt接管
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver: # 解析规则没有命中域名（如国内域名）
+    - 119.29.29.29
+    - 223.5.5.5
+    - 202.96.128.166 # 电信
+    # - https://doh.pub/dns-query
+    # - https://dns.alidns.com/dns-query
+  fallback: # fallback 用来解析墙外域名
+    ## Cloudflare
+    - https://1.1.1.1/dns-query
+    # - https://1.0.0.1/dns-query
+    ## Google DoH
+    - https://8.8.8.8/dns-query
+    ## IIJ 公共 DNS 服务
+    - https://public.dns.iij.jp/dns-query
+    ## OSZX DoT
+    - https://dns.oszx.co/dns-query
+    ## Japan DoT
+    # - https://jp.tiar.app/dns-query
+  default-nameserver: # default-nameserver 用来解析 nameserver 和 fallback 里面的域名
+    - 119.29.29.29
+    - 223.5.5.5
+    - 202.96.128.166
+  fake-ip-filter: # 指定以下域名使用 fallback 解析
+    geoip: true # 
+    ipcidr:
+      - 240.0.0.0/4
+      - 127.0.0.1/8
+      - 0.0.0.0/32
+tun:
+  enable: true
+  stack: system
+  auto-route: true # 如果在ROS的Container中使用可注释此行
+  auto-detect-interface: false
+  dns-hijack:
+    - tcp://any:53
+profile:
+  store-selected: true
+
+proxy-providers:
+  xxxxx:
+    type: http
+    url: <clash订阅地址>
+    interval: 86400
+    path: ./xxxxx.yaml
+    health-check:
+      enable: false
+      interval: 600
+      # lazy: true
+      url: http://www.gstatic.com/generate_204
+  # yyyyy:
+  #   type: http
+  #   url: <clash订阅地址>
+  #   interval: 86400
+  #   path: ./yyyyy.yaml
+  #   health-check:
+  #     enable: false
+  #     interval: 600
+  #     # lazy: true
+  #     url: http://www.gstatic.com/generate_204
+
+proxy-groups:
+  - name: PROXY
+    type: select
+    use:
+      - xxxxx
+      # - yyyyy
+
+rule-providers:
+  # 私有规则
+  private:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
+    path: ./ruleset/private.yaml
+    interval: 86400
+
+  # 进程代理规则
+  applications:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
+    path: ./ruleset/applications.yaml
+    interval: 86400
+
+  # 自定义分流规则
+  icloud:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/icloud.txt"
+    path: ./ruleset/icloud.yaml
+    interval: 86400
+
+  apple:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/apple.txt"
+    path: ./ruleset/apple.yaml
+    interval: 86400
+
+  google:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/google.txt"
+    path: ./ruleset/google.yaml
+    interval: 86400
+
+  proxy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/proxy.txt"
+    path: ./ruleset/proxy.yaml
+    interval: 86400
+
+  direct:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/direct.txt"
+    path: ./ruleset/direct.yaml
+    interval: 86400
+
+  cncidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/cncidr.txt"
+    path: ./ruleset/cncidr.yaml
+    interval: 86400
+
+  telegramcidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/telegramcidr.txt"
+    path: ./ruleset/telegramcidr.yaml
+    interval: 86400
+
+  lancidr:
+    type: http
+    behavior: ipcidr
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/lancidr.txt"
+    path: ./ruleset/lancidr.yaml
+    interval: 86400
+
+rules:
+  # - DST-PORT,7895,REJECT
+  # - DST-PORT,7892,REJECT
+  ## 按需配置
+  - PROCESS-NAME,clash,DIRECT
+  - RULE-SET,applications,DIRECT
+  - RULE-SET,private,DIRECT
+  - RULE-SET,icloud,DIRECT
+  - RULE-SET,apple,DIRECT
+  - RULE-SET,google,DIRECT
+  - RULE-SET,proxy,PROXY
+  - RULE-SET,direct,DIRECT
+  - RULE-SET,lancidr,DIRECT
+  - RULE-SET,cncidr,DIRECT
+  - RULE-SET,telegramcidr,PROXY
+  - GEOIP,LAN,DIRECT
+  - GEOIP,CN,DIRECT
+  - MATCH,PROXY
