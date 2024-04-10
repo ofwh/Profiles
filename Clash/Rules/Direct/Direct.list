@@ -1,0 +1,20 @@
+DST-PORT,22
+
+# 个人域名
+DOMAIN-SUFFIX,bofoi.fun
+DOMAIN-SUFFIX,vkit.fun
+DOMAIN-SUFFIX,vkit.run
+DOMAIN-SUFFIX,podkit.cn
+DOMAIN-SUFFIX,v2rome.com
+DOMAIN-SUFFIX,cn2ip.com
+DOMAIN-SUFFIX,f0rger.com
+DOMAIN-SUFFIX,v2ro.com
+
+# 直连域名
+DOMAIN-SUFFIX,plex.tv
+DOMAIN-SUFFIX,luyou.ddns.net
+DOMAIN-SUFFIX,oray.com
+DOMAIN-SUFFIX,oray.net
+
+# 1Password直连
+DOMAIN-SUFFIX,1password.com

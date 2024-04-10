@@ -1,0 +1,17 @@
+payload:
+  - DST-PORT,22
+  - DOMAIN-SUFFIX,bofoi.com
+  - DOMAIN-SUFFIX,vkit.fun
+  - DOMAIN-SUFFIX,vkit.run
+  - DOMAIN-SUFFIX,podkit.cn
+  - DOMAIN-SUFFIX,v2rome.com
+  - DOMAIN-SUFFIX,cn2ip.com
+  - DOMAIN-SUFFIX,f0rger.com
+  - DOMAIN-SUFFIX,v2ro.com
+  - DOMAIN-SUFFIX,plex.tv
+  - DOMAIN-SUFFIX,luyou.ddns.net
+  - DOMAIN-SUFFIX,oray.com
+  - DOMAIN-SUFFIX,oray.net
+  - DOMAIN-SUFFIX,visualstudio.com
+  - DOMAIN-SUFFIX,vscode.dev
+  - DOMAIN-SUFFIX,1password.com
