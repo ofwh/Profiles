@@ -1,0 +1,22 @@
+name: AutoUpdate
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  dispatch:
+    strategy:
+      matrix:
+        event: ['CloudFlare', 'TencentCloud']
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.PAT }}
+          repository: ${{ github.repository_owner }}/profile-r2-migrate
+          event-type: ${{ matrix.event }}
+          client-payload: '{"branch": "${{ github.ref }}"}'
