@@ -1,3 +1,15 @@
+# 说明：
+# event_type 需要在最终被触发执行Action目标仓库的yml配置的on节点下，添加相应的repository_dispatch触发类型
+#
+# 示例配置
+# ```yml
+# on:
+#   repository_dispatch:
+#     types: [profile-changed]
+# ```
+# 
+# 多个yml可以配置相同的event_type，可一次性同时触发
+
 name: AutoUpdate
 
 on:
@@ -10,7 +22,8 @@ jobs:
   dispatch:
     strategy:
       matrix:
-        event: ['CloudFlare', 'TencentCloud']
+        event: ['profile-changed']
+        # event: ['trigger-action-a', 'trigger-action-b']
     runs-on: ubuntu-latest
     steps:
       - name: Repository Dispatch
