@@ -1,7 +1,6 @@
 DST-PORT,22
 
 # 个人域名
-DOMAIN-SUFFIX,bofoi.fun
 DOMAIN-SUFFIX,vkit.fun
 DOMAIN-SUFFIX,vkit.run
 DOMAIN-SUFFIX,podkit.cn

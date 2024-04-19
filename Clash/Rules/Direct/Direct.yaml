@@ -1,6 +1,5 @@
 payload:
   - DST-PORT,22
-  - DOMAIN-SUFFIX,bofoi.com
   - DOMAIN-SUFFIX,vkit.fun
   - DOMAIN-SUFFIX,vkit.run
   - DOMAIN-SUFFIX,podkit.cn
