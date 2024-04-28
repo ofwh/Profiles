@@ -1,0 +1,10 @@
+[URL Rewrite]
+^https?://acs\.m\.taobao\.com/gw/mtop\.taobao\.idle\.home\.welcome/ - REJECT-200
+^https?+://guide-acs\.m\.taobao\.com/gw/mtop\.tmall\.wireless - REJECT-200
+^https?+://acs\.m\.taobao\.com/gw/mtop\.alibaba\.advertisementservice\.getadv - REJECT-200
+^https?+://acs\.m\.taobao\.com/gw/mtop\.film\.mtopadvertiseapi\.queryadvertise/ - REJECT-200
+^https?+://acs\.m\.taobao\.com/gw/mtop\.o2o\.ad\.gateway\.get/ - REJECT-200
+^https?+://acs\.m\.taobao\.com/gw/mtop\.trip\.activity\.querytmsresources/ - REJECT-200
+
+[MITM]
+hostname = %APPEND% acs.m.taobao.com,guide-acs.m.taobao.com

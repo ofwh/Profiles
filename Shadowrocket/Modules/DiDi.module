@@ -1,0 +1,7 @@
+[URL Rewrite]
+https?://res\.xiaojukeji\.com/resapi/activity/mget - REJECT-DICT
+https?://res\.xiaojukeji\.com/resapi/activity/get(Ruled|Preload|PasMultiNotices) - REJECT
+^https?://img-ys011\.didistatic\.com/static/ad_oss/.*.jpg - REJECT
+
+[MITM]
+hostname = %APPEND% res.xiaojukeji.com,*.didistatic.com

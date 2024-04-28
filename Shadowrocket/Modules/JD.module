@@ -1,0 +1,18 @@
+[URL Rewrite]
+^https?://api\.m\.jd\.com/openUpgrade - REJECT-DICT
+^https?://m\.360buyimg\.com/mobilecms/s1125x2436_jfs - REJECT
+^https?://api\.m\.jd\.com/client\.action\?functionId=start$ - REJECT-ARRAY
+^https?://ms\.jr\.jd\.com/gw/generic/(aladdin/na/m/getLoadingPicture|aladdin/na/m/getLoadingPicture) - REJECT
+^https?://ms\.jr\.jd\.com/gw/generic/aladdin/na/m/getLoadingPicture - REJECT
+^https?://ms\.jr\.jd\.com/gw/generic/base/(new)?na/m/adInfo - REJECT
+^https?://ms\.jr\.jd\.com/gw/generic/base/na/m/adInfo - REJECT
+^https?://bdsp-x\.jd\.com/adx/ - REJECT
+^https?://api\.m\.jd.com/client\.action\?functionId=(start|queryMaterialAdverts) - REJECT
+^https?://(bdsp-x|dsp-x)\.jd\.com/adx/ - REJECT
+^https?+://api\.m\.jd\.com/client\.action\?functionId=start$ - REJECT-200
+^https?://img\d+\.360buyimg\.com/jddjadvertise/ - REJECT
+^https?://storage\.360buyimg\.com/kepler-app - REJECT-IMG
+^https?://m\.360buyimg\.com/mobilecms/s640x1136_jfs/ - REJECT-IMG
+
+[MITM]
+hostname = %APPEND% api.m.jd.com,*.360buyimg.com,ms.jr.jd.com,bdsp-x.jd.com,dsp-x.jd.com

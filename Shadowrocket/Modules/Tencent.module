@@ -1,0 +1,32 @@
+[URL Rewrite]
+^https?://btrace\.qq\.com - REJECT-200
+^https?://api2\.helper\.qq\.com/game/buttons - REJECT-IMG
+^https?://\w+\.beacon\.qq\.com - REJECT
+^https?://mi\.gdt\.qq\.com/gdt_mview\.fcg - REJECT
+^https?://lives\.l\.qq\.com/livemsg\?sdtfrom= - REJECT-IMG
+^https?://imgcache\.qq\.com/qqlive/ - REJECT-IMG
+^https?://mtteve\.beacon\.qq\.com/analytics - REJECT-IMG
+^https?+://vv\.video\.qq\.com/getvmind\? - REJECT-200
+^https?+://ssl\.kohsocialapp\.qq\.com:10001/game/buttons - REJECT-200
+^https?+://qt\.qq\.com/lua/mengyou/get_splash_screen_info - REJECT-200
+^https?+://3gimg\.qq\.com/tencentMapTouch/app/activity/ - REJECT-200
+^https?+://3gimg\.qq\.com/tencentMapTouch/splash/ - REJECT-200
+^https?://.+?\.l\.qq\.com - REJECT
+^https?://\w+\.gdt\.qq\.com - REJECT
+^https?://y\.gtimg\.cn/music/.*?_Ad/\d+\.png - REJECT-IMG
+^https?://splashqqlive\.gtimg\.com/website/\d{6} - REJECT-IMG
+^https?://qzonestyle\.gtimg\.cn/qzone/biz/gdt/mob/sdk/ios/v2/ - REJECT-IMG
+^https?://discuz\.gtimg\.cn/cloud/scripts/discuz_tips\.js - REJECT-IMG
+^https?://bla\.gtimg\.com/qqlive/\d{6}.+?\.png - REJECT-IMG
+^https?://mmgr\.gtimg\.com/gjsmall/qiantu/upload/ - REJECT-IMG
+^https?://mmgr\.gtimg\.com/gjsmall/qqpim/public/ios/splash/.+?/\d{4}_\d{4} - REJECT-IMG
+# 腾讯QQ音乐
+^https://us\.l\.qq\.com/exapp - REJECT
+^https?://y\.gtimg\.cn/music/common/upload/t_splash_info/ - REJECT
+^https?://.+?/music/common/upload/t_splash_info/ - REJECT
+^https?://y\.gtimg\.cn/music/common//upload/kg_ad/.*?\d{4}\.jpg - REJECT-IMG
+^https?://y\.gtimg\.cn/music/common/upload/targeted_ads - REJECT-IMG
+^https?://((25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|1\d{2}|[1-9]?\d)/music/common/upload/t_splash_info/ - REJECT
+
+[MITM]
+hostname = %APPEND% btrace.qq.com,*.helper.qq.com,*.beacon.qq.com,*.gdt.qq.com,*.l.qq.com,imgcache.qq.com,vv.video.qq.com,ssl.kohsocialapp.qq.com,qt.qq.com,3gimg.qq.com,*.gtimg.cn,*.gtimg.com

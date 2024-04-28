@@ -1,0 +1,7 @@
+[URL Rewrite]
+^https?+://m\d\.amap\.com/ws/valueadded/alimama/splash_screen/ - REJECT-200
+^https?://m5\.amap\.com/ws/valueadded/ - REJECT
+^https?://optimus-ads\.amap\.com/uploadimg/ - REJECT
+
+[MITM]
+hostname = %APPEND% *.amap.com

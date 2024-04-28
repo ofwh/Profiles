@@ -1,0 +1,6 @@
+[URL Rewrite]
+^https?://cloud\.189\.cn/include/splash/ - REJECT
+^https?://zt-app\.go189\.cn/zt-app/welcome/.*?Animation - REJECT-IMG
+
+[MITM]
+hostname = %APPEND% cloud.189.cn,zt-app.go189.cn

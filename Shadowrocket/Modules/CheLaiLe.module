@@ -1,0 +1,10 @@
+[URL Rewrite]
+^https?://pic1.chelaile.net.cn/adv/ - REJECT
+^https?://(api|atrace)\.chelaile\.net\.cn/adpub/ - REJECT
+^https?://api\.chelaile\.net\.cn/goocity/advert/ - REJECT
+^https?://atrace\.chelaile\.net\.cn/adpub/ - REJECT-IMG
+^https?://atrace\.chelaile\.net\.cn/exhibit\?&adv_image - REJECT-IMG
+^https?://web\.chelaile\.net\.cn/api/adpub/ - REJECT
+
+[MITM]
+hostname = %APPEND% *.chelaile.net.cn

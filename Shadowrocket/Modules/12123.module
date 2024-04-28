@@ -1,0 +1,6 @@
+[URL Rewrite]
+^https://gab\.122\.gov\.cn/eapp/m/sysquery/adver$ - REJECT
+^https://gab\.122\.gov\.cn/eapp/m/sysquery - REJECT
+
+[MITM]
+hostname = %APPEND% gab.122.gov.cn

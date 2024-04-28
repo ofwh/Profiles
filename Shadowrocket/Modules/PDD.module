@@ -1,0 +1,5 @@
+[URL Rewrite]
+^https?://api\.(pinduoduo|yangkeduo)\.com/api/cappuccino/splash - REJECT
+
+[MITM]
+hostname = %APPEND% api.pinduoduo.com,api.yangkeduo.com
