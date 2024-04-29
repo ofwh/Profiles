@@ -20,7 +20,6 @@
 ^https?://bla\.gtimg\.com/qqlive/\d{6}.+?\.png - REJECT-IMG
 ^https?://mmgr\.gtimg\.com/gjsmall/qiantu/upload/ - REJECT-IMG
 ^https?://mmgr\.gtimg\.com/gjsmall/qqpim/public/ios/splash/.+?/\d{4}_\d{4} - REJECT-IMG
-# 腾讯QQ音乐
 ^https://us\.l\.qq\.com/exapp - REJECT
 ^https?://y\.gtimg\.cn/music/common/upload/t_splash_info/ - REJECT
 ^https?://.+?/music/common/upload/t_splash_info/ - REJECT
