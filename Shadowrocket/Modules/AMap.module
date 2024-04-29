@@ -2,6 +2,24 @@
 ^https?+://m\d\.amap\.com/ws/valueadded/alimama/splash_screen/ - REJECT-200
 ^https?://m5\.amap\.com/ws/valueadded/ - REJECT
 ^https?://optimus-ads\.amap\.com/uploadimg/ - REJECT
+^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/card-service-route-plan\? - REJECT-DICT
+^https?:\/\/.*\.amap\.com\/ws\/boss\/order_web\/\w{8}_information - REJECT-200
+^https?:\/\/.*\.amap\.com\/ws\/asa\/ads_attribution - REJECT
+^https?:\/\/.*\.amap\.com\/ws\/shield\/scene\/recommend - REJECT-DICT
+^https?:\/\/.*\.amap\.com\/uploadimg\/\w+\.gif - REJECT-IMG
+^https?:\/\/.*\.amap\.com\/ws\/valueadded\/weather - REJECT-DICT
+
+[Script]
+AMap = type=http-response,script-path=https://raw.bofoi.com/assets/luoweihua7/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^http:\/\/amdc\.m\.taobao\.com
+AMap = type=http-response,script-path=https://raw.bofoi.com/assets/luoweihua7/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/message\/notice\/list
+AMap = type=http-response,script-path=https://raw.bofoi.com/assets/luoweihua7/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable
+AMap = type=http-response,script-path=https://raw.bofoi.com/assets/luoweihua7/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/nearbyrec_smart
+AMap = type=http-response,script-path=https://raw.bofoi.com/assets/luoweihua7/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/promotion-web\/resource
+AMap = type=http-response,script-path=https://raw.bofoi.com/assets/luoweihua7/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page
+AMap = type=http-response,script-path=https://raw.bofoi.com/assets/luoweihua7/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/valueadded\/alimama\/splash_screen
+AMap = type=http-response,script-path=https://raw.bofoi.com/assets/luoweihua7/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/msgbox\/pull
+AMap = type=http-response,script-path=https://raw.bofoi.com/assets/luoweihua7/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaas
+AMap = type=http-response,script-path=https://raw.bofoi.com/assets/luoweihua7/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/new_hotword
 
 [MITM]
 hostname = %APPEND% *.amap.com
