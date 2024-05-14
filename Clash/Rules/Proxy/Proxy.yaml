@@ -1,2 +1,3 @@
 payload:
   - DST-PORT,26538
+  - DOMAIN-SUFFIX,aiproxy.io
