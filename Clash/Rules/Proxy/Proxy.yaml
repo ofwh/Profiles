@@ -1,3 +1,4 @@
 payload:
   - DST-PORT,26538
+  - DOMAIN,kr.bofoi.com
   - DOMAIN-SUFFIX,aiproxy.io
