@@ -1,4 +1,5 @@
 payload:
   - DST-PORT,26538
+  - DOMAIN,login.live.com
   - DOMAIN,kr.bofoi.com
   - DOMAIN-SUFFIX,aiproxy.io
