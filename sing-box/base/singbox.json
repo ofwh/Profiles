@@ -52,7 +52,7 @@
         "query_type": [
           "A"
         ],
-        "rewrite_ttl": 1,
+        "rewrite_ttl": 10,
         "server": "remote-dns"
       }
     ],
