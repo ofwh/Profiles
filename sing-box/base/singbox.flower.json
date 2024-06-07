@@ -1,5 +1,10 @@
 {
   "dns": {
+    "fakeip": {
+      "enabled": true,
+      "inet4_range": "198.18.0.0/15",
+      "inet6_range": "fc00::/18"
+    },
     "final": "remote-dns",
     "independent_cache": true,
     "rules": [
@@ -58,9 +63,13 @@
         "tag": "remote-dns"
       },
       {
-        "address": "https://1.12.12.12/dns-query",
+        "address": "119.29.29.29",
         "detour": "direct",
         "tag": "local-dns"
+      },
+      {
+        "address": "fakeip",
+        "tag": "fakeip-dns"
       },
       {
         "address": "rcode://success",
