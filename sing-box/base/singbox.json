@@ -54,7 +54,7 @@
     "servers": [
       {
         "address": "https://8.8.8.8/dns-query",
-        "detour": "Proxy",
+        "detour": "代理访问",
         "tag": "remote-dns"
       },
       {
@@ -78,7 +78,7 @@
       "default_mode": "rule",
       "external_controller": "0.0.0.0:9090",
       "external_ui": "ui",
-      "external_ui_download_detour": "Proxy"
+      "external_ui_download_detour": "代理访问"
     }
   },
   "inbounds": [
@@ -124,16 +124,9 @@
     {
       "interrupt_exist_connections": true,
       "outbounds": [
-        "include://.*",
-        "tag://direct"
-      ],
-      "tag": "Proxy",
-      "type": "selector"
-    },
-    {
-      "interrupt_exist_connections": true,
-      "outbounds": [
-        "include://.*",
+        "include://(实验性)",
+        "include://(高级)",
+        "include://(标准)",
         "tag://direct"
       ],
       "tag": "代理访问",
@@ -143,7 +136,9 @@
       "interrupt_exist_connections": true,
       "outbounds": [
         "tag://代理访问",
-        "include://.*"
+        "include://(实验性)",
+        "include://(高级)",
+        "include://(标准)"
       ],
       "tag": "AI服务",
       "type": "selector"
@@ -157,7 +152,7 @@
         "tag://日本节点",
         "tag://台湾节点",
         "tag://美国节点",
-        "include://.*"
+        "tag://其他节点"
       ],
       "tag": "YouTube",
       "type": "selector"
@@ -199,7 +194,7 @@
         "tag://日本节点",
         "tag://台湾节点",
         "tag://美国节点",
-        "include://.*"
+        "tag://其他节点"
       ],
       "tag": "Telegram",
       "type": "selector"
@@ -245,6 +240,18 @@
       "type": "urltest"
     },
     {
+      "interrupt_exist_connections": true,
+      "outbounds": [
+        "exclude://(港|HK|Hong)",
+        "exclude://(新|狮城|SG|Singapore)",
+        "exclude://(台|新北|彰化|TW|Taiwan)",
+        "exclude://(日|东京|大阪|埼玉|JP|Japan)",
+        "exclude://(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)"
+      ],
+      "tag": "其他节点",
+      "type": "selector"
+    },
+    {
       "tag": "direct",
       "type": "direct"
     },
@@ -259,10 +266,10 @@
   ],
   "route": {
     "auto_detect_interface": true,
-    "final": "Proxy",
+    "final": "代理访问",
     "rule_set": [
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-category-ads-all",
         "type": "remote",
@@ -270,7 +277,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-apple",
         "type": "remote",
@@ -278,7 +285,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-microsoft",
         "type": "remote",
@@ -286,7 +293,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-google",
         "type": "remote",
@@ -294,7 +301,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geoip-google",
         "type": "remote",
@@ -302,7 +309,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-twitter",
         "type": "remote",
@@ -310,7 +317,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/twitter.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geoip-twitter",
         "type": "remote",
@@ -318,7 +325,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/twitter.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-facebook",
         "type": "remote",
@@ -326,7 +333,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/facebook.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geoip-facebook",
         "type": "remote",
@@ -334,7 +341,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/facebook.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-openai",
         "type": "remote",
@@ -342,7 +349,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-anthropic",
         "type": "remote",
@@ -350,7 +357,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/anthropic.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-telegram",
         "type": "remote",
@@ -358,7 +365,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/telegram.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geoip-telegram",
         "type": "remote",
@@ -366,7 +373,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-youtube",
         "type": "remote",
@@ -374,7 +381,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-netflix",
         "type": "remote",
@@ -382,7 +389,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netflix.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geoip-netflix",
         "type": "remote",
@@ -390,7 +397,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-bahamut",
         "type": "remote",
@@ -398,7 +405,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bahamut.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-tiktok",
         "type": "remote",
@@ -406,7 +413,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tiktok.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-disney",
         "type": "remote",
@@ -414,7 +421,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-hbo",
         "type": "remote",
@@ -422,7 +429,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/hbo.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-primevideo",
         "type": "remote",
@@ -430,7 +437,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/primevideo.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-category-games",
         "type": "remote",
@@ -438,7 +445,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-games.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-cn",
         "type": "remote",
@@ -446,7 +453,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geoip-cn",
         "type": "remote",
@@ -454,7 +461,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geosite-private",
         "type": "remote",
@@ -462,7 +469,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs"
       },
       {
-        "download_detour": "Proxy",
+        "download_detour": "代理访问",
         "format": "binary",
         "tag": "geoip-private",
         "type": "remote",
@@ -496,7 +503,7 @@
       },
       {
         "clash_mode": "Global",
-        "outbound": "Proxy"
+        "outbound": "代理访问"
       },
       {
         "outbound": "block",
@@ -538,7 +545,7 @@
       //   ]
       // },
       {
-        "outbound": "Proxy",
+        "outbound": "代理访问",
         "rule_set": [
           "geosite-microsoft",
           "geosite-google",
