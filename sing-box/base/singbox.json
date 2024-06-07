@@ -1,10 +1,5 @@
 {
   "dns": {
-    "fakeip": {
-      "enabled": true,
-      "inet4_range": "198.18.0.0/15",
-      "inet6_range": "fc00::/18"
-    },
     "final": "remote-dns",
     "independent_cache": true,
     "rules": [
@@ -58,18 +53,14 @@
     ],
     "servers": [
       {
-        "address": "1.1.1.1",
+        "address": "https://8.8.8.8/dns-query",
         "detour": "Proxy",
         "tag": "remote-dns"
       },
       {
-        "address": "119.29.29.29",
+        "address": "https://1.12.12.12/dns-query",
         "detour": "direct",
         "tag": "local-dns"
-      },
-      {
-        "address": "fakeip",
-        "tag": "fakeip-dns"
       },
       {
         "address": "rcode://success",
@@ -81,8 +72,7 @@
   "experimental": {
     "cache_file": {
       "enabled": true,
-      "path": "cache.db",
-      "store_fakeip": true
+      "store_fakeip": false
     },
     "clash_api": {
       "default_mode": "rule",
@@ -94,14 +84,14 @@
   "inbounds": [
     {
       "listen": "::",
-      "listen_port": 7890,
+      "listen_port": 8888,
       "sniff": true,
       "tag": "mixed-in",
       "type": "mixed"
     },
     {
       "listen": "::",
-      "listen_port": 8888,
+      "listen_port": 9887,
       "sniff": true,
       "sniff_override_destination": false,
       "tag": "redirect-in",
@@ -217,7 +207,7 @@
     {
       "interrupt_exist_connections": true,
       "outbounds": [
-        "include://港|HK|Hong"
+        "include://(港|HK|Hong)"
       ],
       "tag": "香港节点",
       "type": "urltest"
@@ -225,7 +215,7 @@
     {
       "interrupt_exist_connections": true,
       "outbounds": [
-        "include://新|狮城|SG|Singapore"
+        "include://(新|狮城|SG|Singapore)"
       ],
       "tag": "新加坡节点",
       "type": "urltest"
@@ -233,7 +223,7 @@
     {
       "interrupt_exist_connections": true,
       "outbounds": [
-        "include://台|新北|彰化|TW|Taiwan"
+        "include://(台|新北|彰化|TW|Taiwan)"
       ],
       "tag": "台湾节点",
       "type": "urltest"
@@ -241,7 +231,7 @@
     {
       "interrupt_exist_connections": true,
       "outbounds": [
-        "include://日|东京|大阪|埼玉|JP|Japan"
+        "include://(日|东京|大阪|埼玉|JP|Japan)"
       ],
       "tag": "日本节点",
       "type": "urltest"
@@ -249,7 +239,7 @@
     {
       "interrupt_exist_connections": true,
       "outbounds": [
-        "include://美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States"
+        "include://(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)"
       ],
       "tag": "美国节点",
       "type": "urltest"
@@ -276,6 +266,7 @@
         "format": "binary",
         "tag": "geosite-category-ads-all",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs"
       },
       {
@@ -283,6 +274,7 @@
         "format": "binary",
         "tag": "geosite-apple",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs"
       },
       {
@@ -290,6 +282,7 @@
         "format": "binary",
         "tag": "geosite-microsoft",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs"
       },
       {
@@ -297,6 +290,7 @@
         "format": "binary",
         "tag": "geosite-google",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs"
       },
       {
@@ -304,6 +298,7 @@
         "format": "binary",
         "tag": "geoip-google",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs"
       },
       {
@@ -311,6 +306,7 @@
         "format": "binary",
         "tag": "geosite-twitter",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/twitter.srs"
       },
       {
@@ -318,6 +314,7 @@
         "format": "binary",
         "tag": "geoip-twitter",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/twitter.srs"
       },
       {
@@ -325,6 +322,7 @@
         "format": "binary",
         "tag": "geosite-facebook",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/facebook.srs"
       },
       {
@@ -332,6 +330,7 @@
         "format": "binary",
         "tag": "geoip-facebook",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/facebook.srs"
       },
       {
@@ -339,6 +338,7 @@
         "format": "binary",
         "tag": "geosite-openai",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.srs"
       },
       {
@@ -346,6 +346,7 @@
         "format": "binary",
         "tag": "geosite-anthropic",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/anthropic.srs"
       },
       {
@@ -353,6 +354,7 @@
         "format": "binary",
         "tag": "geosite-telegram",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/telegram.srs"
       },
       {
@@ -360,6 +362,7 @@
         "format": "binary",
         "tag": "geoip-telegram",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs"
       },
       {
@@ -367,6 +370,7 @@
         "format": "binary",
         "tag": "geosite-youtube",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs"
       },
       {
@@ -374,6 +378,7 @@
         "format": "binary",
         "tag": "geosite-netflix",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netflix.srs"
       },
       {
@@ -381,6 +386,7 @@
         "format": "binary",
         "tag": "geoip-netflix",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs"
       },
       {
@@ -388,6 +394,7 @@
         "format": "binary",
         "tag": "geosite-bahamut",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/bahamut.srs"
       },
       {
@@ -395,6 +402,7 @@
         "format": "binary",
         "tag": "geosite-tiktok",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/tiktok.srs"
       },
       {
@@ -402,6 +410,7 @@
         "format": "binary",
         "tag": "geosite-disney",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs"
       },
       {
@@ -409,6 +418,7 @@
         "format": "binary",
         "tag": "geosite-hbo",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/hbo.srs"
       },
       {
@@ -416,6 +426,7 @@
         "format": "binary",
         "tag": "geosite-primevideo",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/primevideo.srs"
       },
       {
@@ -423,6 +434,7 @@
         "format": "binary",
         "tag": "geosite-category-games",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-games.srs"
       },
       {
@@ -430,6 +442,7 @@
         "format": "binary",
         "tag": "geosite-cn",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs"
       },
       {
@@ -437,6 +450,7 @@
         "format": "binary",
         "tag": "geoip-cn",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/cn.srs"
       },
       {
@@ -444,6 +458,7 @@
         "format": "binary",
         "tag": "geosite-private",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/private.srs"
       },
       {
@@ -451,31 +466,20 @@
         "format": "binary",
         "tag": "geoip-private",
         "type": "remote",
+        "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/private.srs"
       }
     ],
     "rules": [
       {
-        "outbound": "dns-out",
-        "protocol": "dns"
-      },
-      {
-        "outbound": "dns-out",
-        "port": 53
-      },
-      {
         "mode": "or",
-        "outbound": "block",
+        "outbound": "dns-out",
         "rules": [
           {
-            "port": 853
+            "protocol": "dns"
           },
           {
-            "network": "udp",
-            "port": 443
-          },
-          {
-            "protocol": "stun"
+            "port": 53
           }
         ],
         "type": "logical"
@@ -496,12 +500,8 @@
       },
       {
         "outbound": "block",
-        "rule_set": "geosite-category-ads-all"
-      },
-      {
-        "outbound": "direct",
         "rule_set": [
-          "geosite-apple"
+          "geosite-category-ads-all"
         ]
       },
       {
@@ -556,6 +556,7 @@
       {
         "outbound": "direct",
         "rule_set": [
+          "geosite-apple",
           "geosite-cn",
           "geoip-cn",
           "geosite-private",
