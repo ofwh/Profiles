@@ -53,7 +53,7 @@
         "query_type": [
           "A"
         ],
-        "rewrite_ttl": 10,
+        "rewrite_ttl": 60,
         "server": "remote-dns"
       }
     ],
@@ -113,17 +113,17 @@
       "inet4_address": "172.19.0.1/30",
       "sniff": true,
       "sniff_override_destination": false,
-      "stack": "mixed",
+      "stack": "system",
       "type": "tun"
+    },
+    {
+      "listen": "::",
+      "listen_port": 53,
+      "network": "udp",
+      "sniff": true,
+      "tag": "direct-in",
+      "type": "direct"
     }
-    // {
-    //   "listen": "::",
-    //   "listen_port": 53,
-    //   "network": "udp",
-    //   "sniff": true,
-    //   "tag": "direct-in",
-    //   "type": "direct"
-    // }
   ],
   "log": {
     "disabled": false,
