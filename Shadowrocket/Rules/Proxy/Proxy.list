@@ -1,4 +1,6 @@
 # SSH
 DST-PORT,26538
 
+DOMAIN-KEYWORD,aliyun.com
+DOMAIN-KEYWORD,alibabacloud.com
 DOMAIN-KEYWORD,aiproxy.io

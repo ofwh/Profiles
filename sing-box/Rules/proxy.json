@@ -3,6 +3,8 @@
   "rules": [
     {
       "domain_suffix": [
+        ".aliyun.com",
+        ".alibabacloud.com",
         ".aiproxy.io"
       ]
     }

@@ -1,7 +1,7 @@
 payload:
   - DST-PORT,26538
   - DOMAIN,login.live.com
-  - DOMAIN,account-intl.aliyun.com
-  - DOMAIN,account.alibabacloud.com
   - DOMAIN,kr.bofoi.com
+  - DOMAIN-SUFFIX,aliyun.com
+  - DOMAIN-SUFFIX,alibabacloud.com
   - DOMAIN-SUFFIX,aiproxy.io
