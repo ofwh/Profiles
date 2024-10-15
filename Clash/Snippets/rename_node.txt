@@ -1,3 +1,6 @@
+;无意义节点
+(更新|订阅|访问|QQ|微信|联系|优化)@
+
 ;流媒体改*
 港区TVB\/HBO\/Netflix解锁@*
 (Netflix|NETFLIX|HBO TVB) ?(原生游戏解锁|动画疯)?@*
