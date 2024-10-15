@@ -1,6 +1,3 @@
-;无意义节点
-(更新|订阅|访问|QQ|微信|联系|优化)@
-
 ;流媒体改*
 港区TVB\/HBO\/Netflix解锁@*
 (Netflix|NETFLIX|HBO TVB) ?(原生游戏解锁|动画疯)?@*
@@ -9,36 +6,36 @@
 \|@
 
 ;移除倍率
-\s?\(?((x|X)?(\d+)(\.?\d+)?)((\s?倍率?)|(x|X))\)?|(\*\d+\.?\d+?)?|(x|X)\d?\d(\.\d)?@
+;\s?\(?((x|X)?(\d+)(\.?\d+)?)((\s?倍率?)|(x|X))\)?|(\*\d+\.?\d+?)?|(x|X)\d?\d(\.\d)?@
 
 ;移除速率
 ?(\d)+(G|M)(bps)?@
 
 ;国名汉化
-RUS@俄罗斯
-AUS?@澳大利亚
-IDN@印尼
-FRA?@法国
-DEU?@德国
-ESP@西班牙
-ISL@冰岛
-PHL@菲律宾
-DNK@丹麦
-CAN?@加拿大
-GB|GBR|UK@英国
-VNM@越南
-THA@泰国
-TUR@土耳其
-POL@波兰
-NLD@荷兰
-HKG?@香港
-SGP?|狮城@新加坡
-TWN?@台湾
-USA?@美国
-JPN?@日本
-IND?@印度
-KR|KOR@韩国
-DEU?@德国
+RUS\b@俄罗斯
+AUS?\b@澳大利亚
+IDN\b@印尼
+FRA?\b@法国
+DEU?\b@德国
+ESP\b@西班牙
+ISL\b@冰岛
+PHL\b@菲律宾
+DNK\b@丹麦
+CAN?\b@加拿大
+(GB|GBR|UK)\b@英国
+VNM\b@越南
+THA\b@泰国
+TUR\b@土耳其
+POL\b@波兰
+NLD\b@荷兰
+HKG?\b@香港
+(SGP?|狮城)\b@新加坡
+TWN?\b@台湾
+USA?\b@美国
+JPN?\b@日本
+IND?\b@印度
+(KR|KOR)\b@韩国
+DEU?\b@德国
 
 ; 自定义重命名规则
 (\s*IEPL\s*)@
