@@ -1,0 +1,6 @@
+# 微信读书TTS
+# 说明：微信读书在版本7之后的语音听感，在线和离线几乎一致，屏蔽掉在线TTS转换
+DOMAIN,ae.weixin.qq.com
+DOMAIN,rmonitor.qq.com
+DOMAIN,oss.weread.qq.com
+DOMAIN,ap-shanghai.cls.tencentcs.com

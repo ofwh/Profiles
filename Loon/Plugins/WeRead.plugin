@@ -1,0 +1,10 @@
+#!name= 微信读书
+#!desc= 屏蔽微信读书的版本更新提示
+#!icon= https://raw.githubusercontent.com/luoweihua7/Profiles/main/Loon/Icons/WeRead.png
+
+[Script]
+http-response ^https?:\/\/i\.weread\.qq\.com\/mobileSync script-path = https://raw.githubusercontent.com/luoweihua7/Profiles/main/Loon/Scripts/WeRead.js, requires-body = true, tag = 微信读书
+
+
+[MitM]
+hostname = weread.qq.com,i.weread.qq.com
