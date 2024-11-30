@@ -1,0 +1,8 @@
+# 自用的指定代理域名
+
+DOMAIN,raw.githubusercontent.com
+DOMAIN,login.live.com
+DOMAIN,kr.bofoi.com
+DOMAIN-SUFFIX,aliyun.com
+DOMAIN-SUFFIX,alibabacloud.com
+DOMAIN-SUFFIX,aiproxy.io
