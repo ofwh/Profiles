@@ -1,0 +1,18 @@
+{
+  "rules": [
+    {
+      "domain_suffix": [
+        "vkit.fun",
+        "vkit.run",
+        "podkit.cn",
+        "v2rome.com",
+        "cn2ip.com",
+        "f0rger.com",
+        "v2ro.com",
+        "scf.pub",
+        "luyou.ddns.net",
+        "1password.com"
+      ]
+    }
+  ]
+}
