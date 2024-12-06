@@ -24,10 +24,10 @@ if (method === 'POST' && url.includes('mobileSync') && body.includes('upgrade'))
   configsets.notice_title = 'Loon Script';
   configsets.showTeenModeAlert = 0;
   configsets.detectDiskSpaceInterval = 43200;
-  configsets.normal_reward_ad = "{\"timeoutSeconds\":1}";
+  configsets.normal_reward_ad = '{"timeoutSeconds":1}';
 
   const rewrote = JSON.stringify(bodyJSON);
   $done({ body: rewrote });
 } else {
-  $done({ body });
+  $done({});
 }
