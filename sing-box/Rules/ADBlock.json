@@ -3,7 +3,11 @@
   "rules": [
     {
       "domain": [
-        "advertising.apple.com)",
+        "ae.weixin.qq.com",
+        "rmonitor.qq.com",
+        "oss.weread.qq.com",
+        "ap-shanghai.cls.tencentcs.com",
+        "advertising.apple.com",
         "api-adservices.apple.com",
         "apple.comscoreresearch.com",
         "banners.itunes.apple.com",
