@@ -2,6 +2,12 @@
 #!desc=屏蔽微信读书的版本更新提示
 #!icon=https://raw.githubusercontent.com/luoweihua7/Profiles/main/Loon/Icons/WeRead.png
 
+[Rule]
+DOMAIN, ae.weixin.qq.com, REJECT
+DOMAIN, rmonitor.qq.com, REJECT
+DOMAIN, oss.weread.qq.com, REJECT
+DOMAIN, ap-shanghai.cls.tencentcs.com, REJECT
+
 [Script]
 http-response ^https?:\/\/i\.weread\.qq\.com\/mobileSync script-path = https://raw.githubusercontent.com/luoweihua7/Profiles/main/Loon/Scripts/WeRead.js, requires-body = true, tag = 微信读书
 
