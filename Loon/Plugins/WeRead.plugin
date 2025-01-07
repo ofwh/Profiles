@@ -1,5 +1,5 @@
 #!name=微信读书
-#!desc=屏蔽微信读书的版本更新提示
+#!desc=屏蔽微信读书的版本更新提示，屏蔽语音在线转换（离线）
 #!icon=https://raw.githubusercontent.com/luoweihua7/Profiles/main/Loon/Icons/WeRead.png
 
 [Rule]
@@ -13,4 +13,4 @@ http-response ^https?:\/\/i\.weread\.qq\.com\/mobileSync script-path = https://r
 
 
 [MitM]
-hostname = weread.qq.com,i.weread.qq.com
+hostname = weread.qq.com,i.weread.qq.com,ae.weixin.qq.com,rmonitor.qq.com,oss.weread.qq.com,ap-shanghai.cls.tencentcs.com
