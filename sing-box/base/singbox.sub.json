@@ -50,6 +50,7 @@
           "geosite-google",
           "geosite-openai",
           "geosite-anthropic",
+          "geosite-cursor",
           "geosite-telegram",
           "geosite-youtube",
           "geosite-netflix",
@@ -382,6 +383,14 @@
       {
         "download_detour": "代理访问",
         "format": "binary",
+        "tag": "geosite-cursor",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cursor.srs"
+      },
+      {
+        "download_detour": "代理访问",
+        "format": "binary",
         "tag": "geosite-telegram",
         "type": "remote",
         "update_interval": "1d",
@@ -539,7 +548,8 @@
         "outbound": "AI服务",
         "rule_set": [
           "geosite-openai",
-          "geosite-anthropic"
+          "geosite-anthropic",
+          "geosite-cursor"
         ]
       },
       {
