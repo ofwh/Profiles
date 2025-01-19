@@ -9,7 +9,7 @@
       "enabled": true
     },
     "clash_api": {
-      "default_mode": "Rules",
+      "default_mode": "Rule",
       "external_controller": "0.0.0.0:9090",
       "external_ui": "ui",
       "external_ui_download_detour": "代理访问",
@@ -57,7 +57,7 @@
           "geosite-disney",
           "geosite-category-games"
         ],
-        "rewrite_ttl": 10,
+        "rewrite_ttl": 60,
         "server": "remote"
       },
       {
