@@ -53,7 +53,7 @@
         "query_type": [
           "A"
         ],
-        "rewrite_ttl": 10,
+        "rewrite_ttl": 60,
         "server": "remote-dns"
       }
     ],

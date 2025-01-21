@@ -57,7 +57,7 @@
           "geosite-disney",
           "geosite-category-games"
         ],
-        "rewrite_ttl": 10,
+        "rewrite_ttl": 60,
         "server": "remote"
       },
       {
