@@ -1,7 +1,7 @@
 {
   "log": {
     "disabled": false,
-    "level": "warn",
+    "level": "info",
     "timestamp": true
   },
   "experimental": {
@@ -9,7 +9,7 @@
       "enabled": true
     },
     "clash_api": {
-      "default_mode": "Rule",
+      "default_mode": "Rules",
       "external_controller": "0.0.0.0:9090",
       "external_ui": "ui",
       "external_ui_download_detour": "代理访问",
@@ -57,7 +57,7 @@
           "geosite-disney",
           "geosite-category-games"
         ],
-        "rewrite_ttl": 60,
+        "rewrite_ttl": 10,
         "server": "remote"
       },
       {
@@ -70,8 +70,7 @@
       },
       {
         "query_type": [
-          "A",
-          "AAAA"
+          "A"
         ],
         "rewrite_ttl": 60,
         "server": "remote"
@@ -83,7 +82,7 @@
     ],
     "final": "remote",
     "independent_cache": true,
-    "strategy": "prefer_ipv4"
+    "strategy": "ipv4_only"
   },
   "inbounds": [
     {
@@ -130,10 +129,10 @@
       "tag": "代理访问",
       "outbounds": [
         "include://(香港)",
+        "include://(美国)",
         "include://(新加坡)",
         "include://(日本)",
         "include://(台湾)",
-        "include://(美国)",
         "tag://direct"
       ],
       "interrupt_exist_connections": true
@@ -170,9 +169,9 @@
       "outbounds": [
         "tag://代理访问",
         "tag://香港节点",
+        "tag://美国节点",
         "tag://日本节点",
         "tag://新加坡节点",
-        "tag://美国节点",
         "tag://台湾节点"
       ],
       "interrupt_exist_connections": true
@@ -183,9 +182,9 @@
       "outbounds": [
         "tag://代理访问",
         "tag://香港节点",
+        "tag://美国节点",
         "tag://日本节点",
         "tag://新加坡节点",
-        "tag://美国节点",
         "tag://台湾节点"
       ],
       "interrupt_exist_connections": true
