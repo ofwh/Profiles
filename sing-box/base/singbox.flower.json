@@ -1,45 +1,64 @@
 {
+  "log": {
+    "disabled": false,
+    "level": "info",
+    "timestamp": true
+  },
+  "experimental": {
+    "cache_file": {
+      "enabled": true
+    },
+    "clash_api": {
+      "default_mode": "Rule",
+      "external_controller": "0.0.0.0:9090",
+      "external_ui": "ui",
+      "external_ui_download_detour": "代理访问",
+      "external_ui_download_url": "https://github.com/MetaCubeX/Yacd-meta/archive/gh-pages.zip"
+    }
+  },
   "dns": {
-    // "fakeip": {
-    //   "enabled": true,
-    //   "inet4_range": "198.18.0.0/15",
-    //   "inet6_range": "fc00::/18"
-    // },
-    "final": "remote-dns",
-    "independent_cache": true,
+    "servers": [
+      {
+        "address": "https://1.1.1.1/dns-query",
+        "detour": "代理访问",
+        "tag": "remote"
+      },
+      {
+        "address": "119.29.29.29",
+        "detour": "direct",
+        "tag": "local"
+      },
+      {
+        "address": "rcode://success",
+        "tag": "block"
+      }
+    ],
     "rules": [
       {
-        "outbound": "any",
-        "server": "local-dns"
-      },
-      {
-        "disable_cache": true,
         "rule_set": [
-          "geosite-category-ads-all"
+          "geosite-category-ads-all",
+          "personal-ad-block"
         ],
-        "server": "block-dns"
+        "disable_cache": true,
+        "server": "block"
       },
       {
         "rule_set": [
+          "personal-proxy",
+          "personal-specify-proxy",
           "geosite-microsoft",
           "geosite-google",
-          // "geosite-twitter",
-          // "geosite-facebook",
-          // "geoip-facebook",
           "geosite-openai",
           "geosite-anthropic",
+          "geosite-cursor",
           "geosite-telegram",
           "geosite-youtube",
           "geosite-netflix",
-          // "geosite-bahamut",
-          // "geosite-tiktok",
-          // "geosite-disney",
-          // "geosite-hbo",
-          // "geosite-primevideo",
-          "geosite-category-games",
-          "geosite-geolocation-!cn"
+          "geosite-disney",
+          "geosite-category-games"
         ],
-        "server": "remote-dns"
+        "rewrite_ttl": 60,
+        "server": "remote"
       },
       {
         "rule_set": [
@@ -47,211 +66,184 @@
           "geosite-cn",
           "geosite-private"
         ],
-        "server": "local-dns"
+        "server": "local"
       },
       {
         "query_type": [
           "A"
         ],
         "rewrite_ttl": 60,
-        "server": "remote-dns"
-      }
-    ],
-    "servers": [
-      {
-        "address": "tls://8.8.8.8",
-        "detour": "代理访问",
-        "tag": "remote-dns"
+        "server": "remote"
       },
       {
-        "address": "119.29.29.29",
-        "detour": "direct",
-        "tag": "local-dns"
-      },
-      // {
-      //   "address": "fakeip",
-      //   "tag": "fakeip-dns"
-      // },
-      {
-        "address": "rcode://success",
-        "tag": "block-dns"
+        "outbound": "any",
+        "server": "local"
       }
     ],
-    "strategy": "prefer_ipv4"
-  },
-  "experimental": {
-    "cache_file": {
-      "enabled": true,
-      "store_fakeip": false
-    },
-    "clash_api": {
-      "default_mode": "rule",
-      "external_controller": "0.0.0.0:9090",
-      "external_ui": "ui",
-      "external_ui_download_detour": "代理访问"
-    }
+    "final": "remote",
+    "independent_cache": true,
+    "strategy": "ipv4_only"
   },
   "inbounds": [
-    // {
-    //   "listen": "::",
-    //   "listen_port": 8888,
-    //   "sniff": true,
-    //   "tag": "mixed-in",
-    //   "type": "mixed"
-    // },
-    // {
-    //   "listen": "::",
-    //   "listen_port": 9887,
-    //   "sniff": true,
-    //   "sniff_override_destination": false,
-    //   "tag": "redirect-in",
-    //   "type": "redirect"
-    // },
     {
-      "auto_route": true,
-      "gso": false,
-      "inet4_address": "172.19.0.1/30",
-      "sniff": true,
-      "sniff_override_destination": false,
-      "stack": "system",
-      "type": "tun"
+      "type": "mixed",
+      "tag": "mixed-in",
+      "listen": "::",
+      "listen_port": 7890,
+      "sniff": true
     },
     {
+      "tag": "redirect-in",
+      "type": "redirect",
+      "listen": "::",
+      "listen_port": 9887,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "tcp_fast_open": true,
+      "tcp_multi_path": true
+    },
+    {
+      "tag": "tun-in",
+      "type": "tun",
+      "address": [
+        "172.19.0.1/30"
+      ],
+      "auto_route": true,
+      "sniff": true,
+      "sniff_override_destination": false,
+      "stack": "mixed",
+      "gso": false
+    },
+    {
+      "tag": "direct-in",
+      "type": "direct",
       "listen": "::",
       "listen_port": 53,
       "network": "udp",
-      "sniff": true,
-      "tag": "direct-in",
-      "type": "direct"
+      "sniff": true
     }
   ],
-  "log": {
-    "disabled": false,
-    "level": "warn",
-    "timestamp": true
-  },
   "outbounds": [
     {
-      "interrupt_exist_connections": true,
+      "type": "selector",
+      "tag": "代理访问",
       "outbounds": [
         "include://(实验性)",
         "include://(高级)",
         "include://(标准)",
         "tag://direct"
       ],
-      "tag": "代理访问",
-      "type": "selector"
+      "interrupt_exist_connections": true
     },
     {
-      "interrupt_exist_connections": true,
-      "outbounds": [
-        "tag://代理访问",
-        "include://(实验性)",
-        "include://(高级)"
-      ],
+      "type": "selector",
       "tag": "AI服务",
-      "type": "selector"
-    },
-    {
-      "interrupt_exist_connections": true,
       "outbounds": [
         "tag://代理访问",
         "include://(实验性)",
-        "include://(高级)"
+        "include://(高级)",
+        "include://(标准)"
       ],
-      "tag": "YouTube",
-      "type": "selector"
+      "interrupt_exist_connections": true
     },
-    // {
-    //   "interrupt_exist_connections": true,
-    //   "outbounds": [
-    //     "tag://代理访问",
-    //     "tag://香港节点",
-    //     "tag://新加坡节点",
-    //     "tag://日本节点",
-    //     "tag://台湾节点",
-    //     "tag://美国节点",
-    //     "include://.*"
-    //   ],
-    //   "tag": "Netflix",
-    //   "type": "selector"
-    // },
-    // {
-    //   "interrupt_exist_connections": true,
-    //   "outbounds": [
-    //     "tag://代理访问",
-    //     "tag://香港节点",
-    //     "tag://新加坡节点",
-    //     "tag://日本节点",
-    //     "tag://台湾节点",
-    //     "tag://美国节点",
-    //     "include://.*"
-    //   ],
-    //   "tag": "Disney",
-    //   "type": "selector"
-    // },
     {
-      "interrupt_exist_connections": true,
+      "type": "selector",
+      "tag": "指定代理",
       "outbounds": [
         "tag://代理访问",
         "include://(实验性)",
-        "include://(高级)"
+        "include://(高级)",
+        "include://(标准)"
       ],
-      "tag": "Telegram",
-      "type": "selector"
+      "interrupt_exist_connections": true
     },
-    // {
-    //   "interrupt_exist_connections": true,
-    //   "outbounds": [
-    //     "include://(港|HK|Hong)"
-    //   ],
-    //   "tag": "香港节点",
-    //   "type": "urltest"
-    // },
-    // {
-    //   "interrupt_exist_connections": true,
-    //   "outbounds": [
-    //     "include://(新|狮城|SG|Singapore)"
-    //   ],
-    //   "tag": "新加坡节点",
-    //   "type": "urltest"
-    // },
-    // {
-    //   "interrupt_exist_connections": true,
-    //   "outbounds": [
-    //     "include://(台|新北|彰化|TW|Taiwan)"
-    //   ],
-    //   "tag": "台湾节点",
-    //   "type": "urltest"
-    // },
-    // {
-    //   "interrupt_exist_connections": true,
-    //   "outbounds": [
-    //     "include://(日|东京|大阪|埼玉|JP|Japan)"
-    //   ],
-    //   "tag": "日本节点",
-    //   "type": "urltest"
-    // },
-    // {
-    //   "interrupt_exist_connections": true,
-    //   "outbounds": [
-    //     "include://(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)"
-    //   ],
-    //   "tag": "美国节点",
-    //   "type": "urltest"
-    // },
-    // {
-    //   "interrupt_exist_connections": true,
-    //   "outbounds": [
-    //     "exclude://(港|HK|Hong)",
-    //     "exclude://(新|狮城|SG|Singapore)",
-    //     "exclude://(台|新北|彰化|TW|Taiwan)",
-    //     "exclude://(日|东京|大阪|埼玉|JP|Japan)",
-    //     "exclude://(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)"
-    //   ],
-    //   "tag": "其他节点",
-    //   "type": "selector"
-    // },
+    {
+      "type": "selector",
+      "tag": "海外媒体",
+      "outbounds": [
+        "tag://代理访问",
+        "tag://香港节点",
+        "tag://美国节点",
+        "tag://日本节点",
+        "tag://新加坡节点",
+        "tag://台湾节点",
+        "include://(实验性)",
+        "include://(高级)",
+        "include://(标准)"
+      ],
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "selector",
+      "tag": "规则之外",
+      "outbounds": [
+        "tag://代理访问",
+        "tag://香港节点",
+        "tag://美国节点",
+        "tag://日本节点",
+        "tag://新加坡节点",
+        "tag://台湾节点",
+        "include://(实验性)",
+        "include://(高级)",
+        "include://(标准)"
+      ],
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "urltest",
+      "tag": "香港节点",
+      "outbounds": [
+        "include://(香港)"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 70,
+      "interrupt_exist_connections": false
+    },
+    {
+      "type": "urltest",
+      "tag": "日本节点",
+      "outbounds": [
+        "include://(日本)"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 70,
+      "interrupt_exist_connections": false
+    },
+    {
+      "type": "urltest",
+      "tag": "新加坡节点",
+      "outbounds": [
+        "include://(新加坡)"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 70,
+      "interrupt_exist_connections": false
+    },
+    {
+      "type": "urltest",
+      "tag": "台湾节点",
+      "outbounds": [
+        "include://(台湾)"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 70,
+      "interrupt_exist_connections": false
+    },
+    {
+      "type": "urltest",
+      "tag": "美国节点",
+      "outbounds": [
+        "include://(美国)"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "3m",
+      "tolerance": 70,
+      "interrupt_exist_connections": false
+    },
     {
       "tag": "direct",
       "type": "direct"
@@ -266,9 +258,39 @@
     }
   ],
   "route": {
-    "auto_detect_interface": true,
-    "final": "代理访问",
     "rule_set": [
+      {
+        "download_detour": "代理访问",
+        "format": "source",
+        "tag": "personal-ad-block",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://raw.githubusercontent.com/luoweihua7/Profiles/refs/heads/main/sing-box/Rules/ADBlock.json"
+      },
+      {
+        "download_detour": "代理访问",
+        "format": "source",
+        "tag": "personal-direct",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://raw.githubusercontent.com/luoweihua7/Profiles/refs/heads/main/sing-box/Rules/Direct.json"
+      },
+      {
+        "download_detour": "代理访问",
+        "format": "source",
+        "tag": "personal-proxy",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://raw.githubusercontent.com/luoweihua7/Profiles/refs/heads/main/sing-box/Rules/Proxy.json"
+      },
+      {
+        "download_detour": "代理访问",
+        "format": "source",
+        "tag": "personal-specify-proxy",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://raw.githubusercontent.com/luoweihua7/Profiles/refs/heads/main/sing-box/Rules/SpecifyProxy.json"
+      },
       {
         "download_detour": "代理访问",
         "format": "binary",
@@ -356,6 +378,14 @@
         "type": "remote",
         "update_interval": "1d",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/anthropic.srs"
+      },
+      {
+        "download_detour": "代理访问",
+        "format": "binary",
+        "tag": "geosite-cursor",
+        "type": "remote",
+        "update_interval": "1d",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cursor.srs"
       },
       {
         "download_detour": "代理访问",
@@ -448,13 +478,6 @@
       {
         "download_detour": "代理访问",
         "format": "binary",
-        "tag": "geosite-geolocation-!cn",
-        "type": "remote",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs"
-      },
-      {
-        "download_detour": "代理访问",
-        "format": "binary",
         "tag": "geosite-cn",
         "type": "remote",
         "update_interval": "1d",
@@ -487,8 +510,9 @@
     ],
     "rules": [
       {
-        "mode": "or",
         "outbound": "dns-out",
+        "type": "logical",
+        "mode": "or",
         "rules": [
           {
             "protocol": "dns"
@@ -496,8 +520,7 @@
           {
             "port": 53
           }
-        ],
-        "type": "logical"
+        ]
       },
       {
         "outbound": "direct",
@@ -506,67 +529,52 @@
         ]
       },
       {
-        "clash_mode": "Direct",
-        "outbound": "direct"
+        "outbound": "direct",
+        "clash_mode": "direct"
       },
       {
-        "clash_mode": "Global",
-        "outbound": "代理访问"
+        "outbound": "代理访问",
+        "clash_mode": "global"
       },
       {
         "outbound": "block",
         "rule_set": [
-          "geosite-category-ads-all"
+          "geosite-category-ads-all",
+          "personal-ad-block"
         ]
       },
       {
         "outbound": "AI服务",
         "rule_set": [
           "geosite-openai",
-          "geosite-anthropic"
+          "geosite-anthropic",
+          "geosite-cursor"
         ]
       },
       {
-        "outbound": "Telegram",
+        "outbound": "海外媒体",
         "rule_set": [
+          "geosite-youtube",
+          "geosite-netflix",
+          "geoip-netflix",
+          "geosite-disney",
           "geosite-telegram",
           "geoip-telegram"
         ]
       },
       {
-        "outbound": "YouTube",
-        "rule_set": [
-          "geosite-youtube"
-        ]
-      },
-      // {
-      //   "outbound": "Netflix",
-      //   "rule_set": [
-      //     "geosite-netflix",
-      //     "geoip-netflix"
-      //   ]
-      // },
-      // {
-      //   "outbound": "Disney",
-      //   "rule_set": [
-      //     "geosite-disney"
-      //   ]
-      // },
-      {
         "outbound": "代理访问",
         "rule_set": [
+          "personal-proxy",
           "geosite-microsoft",
           "geosite-google",
-          "geoip-google",
-          // "geosite-twitter",
-          // "geoip-twitter",
-          // "geosite-facebook",
-          // "geoip-facebook",
-          // "geosite-category-games",
-          // "geosite-bahamut",
-          // "geosite-hbo",
-          // "geosite-primevideo"
-          "geosite-geolocation-!cn"
+          "geoip-google"
+        ]
+      },
+      {
+        "outbound": "指定代理",
+        "rule_set": [
+          "personal-specify-proxy"
         ]
       },
       {
@@ -580,9 +588,11 @@
         ]
       },
       {
-        "ip_is_private": true,
-        "outbound": "direct"
+        "outbound": "direct",
+        "ip_is_private": true
       }
-    ]
+    ],
+    "auto_detect_interface": true,
+    "final": "规则之外"
   }
 }
