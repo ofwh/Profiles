@@ -46,11 +46,11 @@
         "server": "remote-dns"
       },
       {
-        "clash_mode": "direct",
+        "clash_mode": "Direct",
         "server": "local-dns"
       },
       {
-        "clash_mode": "global",
+        "clash_mode": "Global",
         "server": "remote-dns"
       },
       {
