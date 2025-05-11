@@ -46,14 +46,6 @@
         "server": "remote-dns"
       },
       {
-        "clash_mode": "Direct",
-        "server": "local-dns"
-      },
-      {
-        "clash_mode": "Global",
-        "server": "remote-dns"
-      },
-      {
         "outbound": "any",
         "server": "local-dns"
       }
@@ -486,20 +478,11 @@
         "outbound": "direct"
       },
       {
-        "outbound": "direct",
-        "clash_mode": "direct"
-      },
-      {
         "rule_set": [
           "geosite-category-ads-all",
           "personal-ad-block"
         ],
-        "clash_mode": "rule",
         "action": "reject"
-      },
-      {
-        "outbound": "代理访问",
-        "clash_mode": "global"
       },
       {
         "outbound": "代理访问",
