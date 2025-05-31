@@ -1,6 +1,6 @@
 #!name=微信读书
 #!desc=屏蔽微信读书的版本更新提示，屏蔽语音在线转换（离线）
-#!icon=https://raw.githubusercontent.com/luoweihua7/Profiles/main/Loon/Icons/WeRead.png
+#!icon=https://raw.githubusercontent.com/ofwh/Profiles/main/Loon/Icons/WeRead.png
 
 [Rule]
 DOMAIN, ae.weixin.qq.com, REJECT
@@ -9,7 +9,7 @@ DOMAIN, oss.weread.qq.com, REJECT
 DOMAIN, ap-shanghai.cls.tencentcs.com, REJECT
 
 [Script]
-http-response ^https?:\/\/i\.weread\.qq\.com\/mobileSync script-path = https://raw.githubusercontent.com/luoweihua7/Profiles/main/Loon/Scripts/WeRead.js, requires-body = true, tag = 微信读书
+http-response ^https?:\/\/i\.weread\.qq\.com\/mobileSync script-path = https://raw.githubusercontent.com/ofwh/Profiles/main/Loon/Scripts/WeRead.js, requires-body = true, tag = 微信读书
 
 
 [MitM]

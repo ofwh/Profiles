@@ -181,28 +181,28 @@
         "format": "source",
         "tag": "personal-ad-block",
         "type": "remote",
-        "url": "https://raw.githubusercontent.com/luoweihua7/Profiles/refs/heads/main/sing-box/Rules/ADBlock.json"
+        "url": "https://raw.githubusercontent.com/ofwh/Profiles/refs/heads/main/sing-box/Rules/ADBlock.json"
       },
       {
         "download_detour": "代理访问",
         "format": "source",
         "tag": "personal-direct",
         "type": "remote",
-        "url": "https://raw.githubusercontent.com/luoweihua7/Profiles/refs/heads/main/sing-box/Rules/Direct.json"
+        "url": "https://raw.githubusercontent.com/ofwh/Profiles/refs/heads/main/sing-box/Rules/Direct.json"
       },
       {
         "download_detour": "代理访问",
         "format": "source",
         "tag": "personal-proxy",
         "type": "remote",
-        "url": "https://raw.githubusercontent.com/luoweihua7/Profiles/refs/heads/main/sing-box/Rules/Proxy.json"
+        "url": "https://raw.githubusercontent.com/ofwh/Profiles/refs/heads/main/sing-box/Rules/Proxy.json"
       },
       {
         "download_detour": "代理访问",
         "format": "source",
         "tag": "personal-specify-proxy",
         "type": "remote",
-        "url": "https://raw.githubusercontent.com/luoweihua7/Profiles/refs/heads/main/sing-box/Rules/SpecifyProxy.json"
+        "url": "https://raw.githubusercontent.com/ofwh/Profiles/refs/heads/main/sing-box/Rules/SpecifyProxy.json"
       },
       {
         "download_detour": "代理访问",
