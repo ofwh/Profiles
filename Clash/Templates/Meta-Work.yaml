@@ -24,6 +24,9 @@ dns:
       - 119.29.29.29
       - 223.5.5.5
       - 114.114.114.114
+    'geosite:geolocation-!cn':
+      - https://1.1.1.1/dns-query
+      - https://8.8.8.8/dns-query
     'geosite:category-ads-all': rcode://success
     '+.fenqile.cn,+.fenqile.com': [10.1.52.202, 10.1.52.203]
   nameserver:
