@@ -13,7 +13,7 @@
       "default_mode": "rule",
       "external_controller": "0.0.0.0:9090",
       "external_ui": "ui",
-      "external_ui_download_detour": "代理访问",
+      "external_ui_download_detour": "手动选择",
       "external_ui_download_url": "https://github.com/MetaCubeX/yacd/archive/gh-pages.zip"
     }
   },
@@ -21,7 +21,7 @@
     "servers": [
       {
         "address": "https://1.1.1.1/dns-query",
-        "detour": "代理访问",
+        "detour": "手动选择",
         "tag": "remote-dns"
       },
       {
@@ -91,6 +91,13 @@
       "type": "selector",
       "tag": "手动选择",
       "outbounds": [
+        "tag://自动选择",
+        "tag://香港优选",
+        "tag://美国优选",
+        "tag://日本优选",
+        "tag://新加坡优选",
+        "tag://台湾优选",
+        "tag://其他优选",
         "include://(实验)",
         "include://(高级)",
         "include://(标准)",
@@ -98,21 +105,46 @@
         "include://(美)",
         "include://(日)",
         "include://(新)",
-        "include://(台)",
-        "include://(.*)"
+        "include://(.*)",
+        "tag://direct"
       ],
       "interrupt_exist_connections": true
     },
     {
-      "type": "selector",
-      "tag": "代理访问",
+      "type": "urltest",
+      "tag": "自动选择",
       "outbounds": [
-        "tag://手动选择",
         "tag://香港优选",
         "tag://美国优选",
         "tag://日本优选",
         "tag://新加坡优选",
         "tag://台湾优选",
+        "tag://其他优选"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "tolerance": 50,
+      "interrupt_exist_connections": false
+    },
+    {
+      "type": "selector",
+      "tag": "AI服务",
+      "outbounds": [
+        "tag://手动选择",
+        "tag://自动选择",
+        "tag://香港优选",
+        "tag://美国优选",
+        "tag://日本优选",
+        "tag://新加坡优选",
+        "tag://台湾优选",
+        "tag://其他优选",
+        "include://(实验)",
+        "include://(高级)",
+        "include://(标准)",
+        "include://(港)",
+        "include://(美)",
+        "include://(日)",
+        "include://(新)",
+        "include://(.*)",
         "tag://direct"
       ],
       "interrupt_exist_connections": true
@@ -122,26 +154,14 @@
       "tag": "Apple服务",
       "outbounds": [
         "tag://direct",
-        "tag://代理访问",
-        "tag://香港优选",
-        "tag://美国优选",
-        "tag://日本优选",
-        "tag://新加坡优选",
-        "tag://台湾优选"
-      ],
-      "interrupt_exist_connections": true
-    },
-    {
-      "type": "selector",
-      "tag": "AI服务",
-      "outbounds": [
-        "tag://代理访问",
         "tag://手动选择",
+        "tag://自动选择",
         "tag://香港优选",
         "tag://美国优选",
         "tag://日本优选",
         "tag://新加坡优选",
-        "tag://台湾优选"
+        "tag://台湾优选",
+        "tag://其他优选"
       ],
       "interrupt_exist_connections": true
     },
@@ -149,12 +169,15 @@
       "type": "selector",
       "tag": "Google服务",
       "outbounds": [
-        "tag://代理访问",
+        "tag://手动选择",
+        "tag://自动选择",
         "tag://香港优选",
         "tag://美国优选",
         "tag://日本优选",
         "tag://新加坡优选",
-        "tag://台湾优选"
+        "tag://台湾优选",
+        "tag://其他优选",
+        "tag://direct"
       ],
       "interrupt_exist_connections": true
     },
@@ -162,12 +185,15 @@
       "type": "selector",
       "tag": "Telegram服务",
       "outbounds": [
-        "tag://代理访问",
+        "tag://手动选择",
+        "tag://自动选择",
         "tag://香港优选",
         "tag://美国优选",
         "tag://日本优选",
         "tag://新加坡优选",
-        "tag://台湾优选"
+        "tag://台湾优选",
+        "tag://其他优选",
+        "tag://direct"
       ],
       "interrupt_exist_connections": true
     },
@@ -175,12 +201,14 @@
       "type": "selector",
       "tag": "Microsoft服务",
       "outbounds": [
-        "tag://代理访问",
+        "tag://手动选择",
+        "tag://自动选择",
         "tag://香港优选",
         "tag://美国优选",
         "tag://日本优选",
         "tag://新加坡优选",
         "tag://台湾优选",
+        "tag://其他优选",
         "tag://direct"
       ],
       "interrupt_exist_connections": true
@@ -189,12 +217,15 @@
       "type": "selector",
       "tag": "Netflix服务",
       "outbounds": [
-        "tag://代理访问",
+        "tag://手动选择",
+        "tag://自动选择",
         "tag://香港优选",
         "tag://美国优选",
         "tag://日本优选",
         "tag://新加坡优选",
-        "tag://台湾优选"
+        "tag://台湾优选",
+        "tag://其他优选",
+        "tag://direct"
       ],
       "interrupt_exist_connections": true
     },
@@ -202,12 +233,15 @@
       "type": "selector",
       "tag": "Disney+服务",
       "outbounds": [
-        "tag://代理访问",
+        "tag://手动选择",
+        "tag://自动选择",
         "tag://香港优选",
         "tag://美国优选",
         "tag://日本优选",
         "tag://新加坡优选",
-        "tag://台湾优选"
+        "tag://台湾优选",
+        "tag://其他优选",
+        "tag://direct"
       ],
       "interrupt_exist_connections": true
     },
@@ -215,13 +249,14 @@
       "type": "selector",
       "tag": "规则之外",
       "outbounds": [
-        "tag://代理访问",
         "tag://手动选择",
+        "tag://自动选择",
         "tag://香港优选",
         "tag://美国优选",
         "tag://日本优选",
         "tag://新加坡优选",
         "tag://台湾优选",
+        "tag://其他优选",
         "include://(实验)",
         "include://(高级)",
         "include://(标准)",
@@ -229,7 +264,8 @@
         "include://(美)",
         "include://(日)",
         "include://(新)",
-        "include://(.*)"
+        "include://(.*)",
+        "tag://direct"
       ],
       "interrupt_exist_connections": true
     },
@@ -289,6 +325,17 @@
       "interrupt_exist_connections": false
     },
     {
+      "type": "urltest",
+      "tag": "其他优选",
+      "outbounds": [
+        "include://(^(?!.*[美日新台港]).+)"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "interval": "1m",
+      "tolerance": 50,
+      "interrupt_exist_connections": false
+    },
+    {
       "tag": "direct",
       "type": "direct"
     }
@@ -298,154 +345,154 @@
     "final": "规则之外",
     "rule_set": [
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "source",
         "tag": "personal-ad-block",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/ofwh/Profiles/refs/heads/main/sing-box/Rules/ADBlock.json"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "source",
         "tag": "personal-direct",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/ofwh/Profiles/refs/heads/main/sing-box/Rules/Direct.json"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "source",
         "tag": "personal-proxy",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/ofwh/Profiles/refs/heads/main/sing-box/Rules/Proxy.json"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "source",
         "tag": "personal-specify-proxy",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/ofwh/Profiles/refs/heads/main/sing-box/Rules/SpecifyProxy.json"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geosite-category-ads-all",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ads-all.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geosite-apple",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/apple.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geosite-microsoft",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/microsoft.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geosite-onedrive",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/onedrive.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geosite-google",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/google.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geoip-google",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/google.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geosite-openai",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geosite-anthropic",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/anthropic.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geosite-cursor",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cursor.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geosite-telegram",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/telegram.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geoip-telegram",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/telegram.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geosite-youtube",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/youtube.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geosite-netflix",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/netflix.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geoip-netflix",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/netflix.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geosite-disney",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geosite-!cn",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geosite-cn",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cn.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geoip-cn",
         "type": "remote",
@@ -485,7 +532,7 @@
         "action": "reject"
       },
       {
-        "outbound": "代理访问",
+        "outbound": "手动选择",
         "rule_set": [
           "personal-proxy",
           "personal-specify-proxy"
