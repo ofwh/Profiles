@@ -364,28 +364,11 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geoip/facebook.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
-        "tag": "geosite-openai",
+        "tag": "geosite-global-ai",
         "type": "remote",
-        "update_interval": "1d",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/openai.srs"
-      },
-      {
-        "download_detour": "代理访问",
-        "format": "binary",
-        "tag": "geosite-anthropic",
-        "type": "remote",
-        "update_interval": "1d",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/anthropic.srs"
-      },
-      {
-        "download_detour": "代理访问",
-        "format": "binary",
-        "tag": "geosite-cursor",
-        "type": "remote",
-        "update_interval": "1d",
-        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/cursor.srs"
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/category-ai-!cn.srs"
       },
       {
         "download_detour": "代理访问",
@@ -546,9 +529,7 @@
       {
         "outbound": "AI服务",
         "rule_set": [
-          "geosite-openai",
-          "geosite-anthropic",
-          "geosite-cursor"
+          "geosite-global-ai"
         ]
       },
       {
