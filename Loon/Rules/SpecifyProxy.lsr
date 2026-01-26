@@ -1,4 +1,5 @@
 # 用于一些需要指定分流地区的页面
+# 规则： https://nsloon.app/docs/Rule/domain_rule
 
 DOMAIN-SUFFIX,17mimei.club
 DOMAIN-SUFFIX,17mimei.com

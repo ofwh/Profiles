@@ -8,8 +8,10 @@
         "kr.bofoi.com",
         "aliyun.com",
         "alibabacloud.com",
-        "aiproxy.io",
         "plex.tv"
+      ],
+      "domain_keyword":[
+        "v2ex"
       ]
     }
   ]

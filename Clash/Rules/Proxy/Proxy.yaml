@@ -5,4 +5,4 @@ payload:
   - DOMAIN,kr.bofoi.com
   - DOMAIN-SUFFIX,aliyun.com
   - DOMAIN-SUFFIX,alibabacloud.com
-  - DOMAIN-SUFFIX,aiproxy.io
+  - DOMAIN-KEYWORD,v2ex
