@@ -41,6 +41,8 @@
         "rule_set": [
           "personal-proxy",
           "personal-specify-proxy",
+          "geosite-ollama",
+          "geosite-container",
           "geosite-!cn"
         ],
         "server": "remote-dns"
@@ -134,8 +136,7 @@
         "tag://实验优选",
         "include://(实验)",
         "tag://direct"
-      ],
-      "tolerance": 50
+      ]
     },
     {
       "type": "selector",
