@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "rules": [
+    {
+      "domain": [
+        "xvcf1.xboxlive.com",
+        "xvcf2.xboxlive.com",
+        "assets1.xboxlive.com",
+        "assets2.xboxlive.com",
+        "registry.ollama.ai"
+      ],
+      "domain_suffix": [
+        "npmjs.org",
+        "npm.community",
+        "npmjs.com",
+        "githubassets.com",
+        "githubusercontent.com",
+        "ghcr.io",
+        "gh.io"
+      ],
+      "domain_keyword": [],
+      "domain_regex": "",
+      "ip_cidr": []
+    }
+  ]
+}
