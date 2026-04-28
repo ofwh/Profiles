@@ -2,6 +2,14 @@ const { method, url = '' } = $request || {};
 const { body = '' } = $response || {};
 
 const replaces = {
+  discover: 0,
+  discoverFeed: 0,
+  browseUpdate: 0,
+  notifCount: 0,
+  storyfeed: 0,
+  storyfeedUpdated: 0,
+  readingExchange: 0,
+  friendReviewUpdate: 0,
   gift: true,
   giftCount: 6,
   upgrade: 0,
