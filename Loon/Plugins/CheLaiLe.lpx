@@ -1,0 +1,26 @@
+#!name=车来了
+#!desc=屏蔽车来了微信小程序广告
+#!icon=https://raw.githubusercontent.com/ofwh/Profiles/main/Loon/Icons/CheLaiLe.webp
+
+[Rule]
+DOMAIN-SUFFIX, atrace.chelaile.net.cn, REJECT
+DOMAIN, logs.chelaile.net.cn, REJECT
+DOMAIN, ad.chelaile.net.cn, REJECT
+URL-REGEX,^https://web\.chelaile\.net\.cn\/adpub, REJECT
+URL-REGEX,^https://web\.chelaile\.net\.cn\/api\/adpub, REJECT
+URL-REGEX,^https://cdn\.chelaile\.net\.cn\/adpub, REJECT
+URL-REGEX,^https://cdn\.chelaile\.net\.cn\/api\/adpub, REJECT
+URL-REGEX,^https://cdn\.web\.chelaileapp\.cn\/adpub, REJECT
+URL-REGEX,^https://cdn\.web\.chelaileapp\.cn\/api\/adpub, REJECT
+URL-REGEX,^https://cdn\.api\.chelaile\.net\.cn\/adpub, REJECT
+URL-REGEX,^https://cdn\.api\.chelaile\.net\.cn\/api\/adpub, REJECT
+URL-REGEX,^https://cdn\.api\.chelaileapp\.cn\/adpub, REJECT
+URL-REGEX,^https://cdn\.api\.chelaileapp\.cn\/api\/adpub, REJECT
+URL-REGEX,^https://124\.70\.194\.16\/adpub, REJECT
+URL-REGEX,^https://124\.70\.194\.16\/api\/adpub, REJECT
+
+[Script]
+
+
+[MitM]
+hostname = atrace.chelaile.net.cn,logs.chelaile.net.cn,ad.chelaile.net.cn,web.chelaile.net.cn,cdn.chelaile.net.cn,cdn.web.chelaileapp.cn,cdn.api.chelaileapp.cn,cdn.api.chelaile.net.cn,124.70.194.16
