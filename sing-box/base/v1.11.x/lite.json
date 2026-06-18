@@ -464,7 +464,7 @@
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/disney.srs"
       },
       {
-        "download_detour": "代理访问",
+        "download_detour": "手动选择",
         "format": "binary",
         "tag": "geosite-18comic",
         "type": "remote",
@@ -527,9 +527,9 @@
       {
         "outbound": "手动选择",
         "rule_set": [
-          "geosite-18comic",
           "personal-proxy",
-          "personal-specify-proxy"
+          "personal-specify-proxy",
+          "geosite-18comic"
         ]
       },
       {

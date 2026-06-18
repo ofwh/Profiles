@@ -466,6 +466,13 @@
       {
         "download_detour": "手动选择",
         "format": "binary",
+        "tag": "geosite-18comic",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/18comic.srs"
+      },
+      {
+        "download_detour": "手动选择",
+        "format": "binary",
         "tag": "geosite-!cn",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs"
@@ -521,7 +528,8 @@
         "outbound": "手动选择",
         "rule_set": [
           "personal-proxy",
-          "personal-specify-proxy"
+          "personal-specify-proxy",
+          "geosite-18comic"
         ]
       },
       {
