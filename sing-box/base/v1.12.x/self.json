@@ -20,18 +20,23 @@
   "dns": {
     "servers": [
       {
-        "type": "https",
-        "server": "8.8.8.8",
+        "address": "https://8.8.8.8/dns-query",
+        "detour": "手动选择",
         "tag": "google-dns"
       },
       {
-        "type": "udp",
-        "server": "119.29.29.29",
+        "address": "https://1.1.1.1/dns-query",
+        "detour": "手动选择",
+        "tag": "cloudflare-dns"
+      },
+      {
+        "address": "119.29.29.29",
+        "detour": "direct",
         "tag": "dnspod-dns"
       },
       {
-        "type": "udp",
-        "server": "225.5.5.5",
+        "address": "223.5.5.5",
+        "detour": "direct",
         "tag": "aliyun-dns"
       }
     ],
@@ -48,11 +53,15 @@
           "personal-specify-proxy",
           "geosite-!cn"
         ],
-        "server": "google-dns",
-        "strategy": "ipv4_only"
+        "server": "google-dns"
+      },
+      {
+        "outbound": "any",
+        "server": "dnspod-dns"
       }
     ],
-    "final": "google-dns"
+    "final": "google-dns",
+    "strategy": "ipv4_only"
   },
   "inbounds": [
     {
@@ -92,20 +101,6 @@
       "type": "selector",
       "tag": "手动选择",
       "outbounds": [
-        "tag://自动选择",
-        "tag://香港优选",
-        "tag://美国优选",
-        "tag://日本优选",
-        "tag://新加坡优选",
-        "tag://台湾优选",
-        "tag://其他优选",
-        "include://(实验)",
-        "include://(高级)",
-        "include://(标准)",
-        "include://(港)",
-        "include://(美)",
-        "include://(日)",
-        "include://(新)",
         "include://(.*)",
         "tag://direct"
       ],
@@ -115,40 +110,11 @@
       "type": "urltest",
       "tag": "自动选择",
       "outbounds": [
-        "tag://香港优选",
-        "tag://美国优选",
-        "tag://日本优选",
-        "tag://新加坡优选",
-        "tag://台湾优选",
-        "tag://其他优选"
+        "include://(.*)"
       ],
       "url": "https://www.gstatic.com/generate_204",
       "tolerance": 50,
       "interrupt_exist_connections": false
-    },
-    {
-      "type": "selector",
-      "tag": "AI服务",
-      "outbounds": [
-        "tag://手动选择",
-        "tag://自动选择",
-        "tag://香港优选",
-        "tag://美国优选",
-        "tag://日本优选",
-        "tag://新加坡优选",
-        "tag://台湾优选",
-        "tag://其他优选",
-        "include://(实验)",
-        "include://(高级)",
-        "include://(标准)",
-        "include://(港)",
-        "include://(美)",
-        "include://(日)",
-        "include://(新)",
-        "include://(.*)",
-        "tag://direct"
-      ],
-      "interrupt_exist_connections": true
     },
     {
       "type": "selector",
@@ -157,12 +123,18 @@
         "tag://direct",
         "tag://手动选择",
         "tag://自动选择",
-        "tag://香港优选",
-        "tag://美国优选",
-        "tag://日本优选",
-        "tag://新加坡优选",
-        "tag://台湾优选",
-        "tag://其他优选"
+        "include://(.*)"
+      ],
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "selector",
+      "tag": "AI服务",
+      "outbounds": [
+        "tag://手动选择",
+        "tag://自动选择",
+        "include://(.*)",
+        "tag://direct"
       ],
       "interrupt_exist_connections": true
     },
@@ -172,13 +144,7 @@
       "outbounds": [
         "tag://手动选择",
         "tag://自动选择",
-        "tag://香港优选",
-        "tag://美国优选",
-        "tag://日本优选",
-        "tag://新加坡优选",
-        "tag://台湾优选",
-        "tag://其他优选",
-        "tag://direct"
+        "include://(.*)"
       ],
       "interrupt_exist_connections": true
     },
@@ -188,13 +154,7 @@
       "outbounds": [
         "tag://手动选择",
         "tag://自动选择",
-        "tag://香港优选",
-        "tag://美国优选",
-        "tag://日本优选",
-        "tag://新加坡优选",
-        "tag://台湾优选",
-        "tag://其他优选",
-        "tag://direct"
+        "include://(.*)"
       ],
       "interrupt_exist_connections": true
     },
@@ -204,137 +164,32 @@
       "outbounds": [
         "tag://手动选择",
         "tag://自动选择",
-        "tag://香港优选",
-        "tag://美国优选",
-        "tag://日本优选",
-        "tag://新加坡优选",
-        "tag://台湾优选",
-        "tag://其他优选",
-        "tag://direct"
-      ],
-      "interrupt_exist_connections": true
-    },
-    {
-      "type": "selector",
-      "tag": "Netflix服务",
-      "outbounds": [
-        "tag://手动选择",
-        "tag://自动选择",
-        "tag://香港优选",
-        "tag://美国优选",
-        "tag://日本优选",
-        "tag://新加坡优选",
-        "tag://台湾优选",
-        "tag://其他优选",
-        "tag://direct"
-      ],
-      "interrupt_exist_connections": true
-    },
-    {
-      "type": "selector",
-      "tag": "Disney+服务",
-      "outbounds": [
-        "tag://手动选择",
-        "tag://自动选择",
-        "tag://香港优选",
-        "tag://美国优选",
-        "tag://日本优选",
-        "tag://新加坡优选",
-        "tag://台湾优选",
-        "tag://其他优选",
-        "tag://direct"
-      ],
-      "interrupt_exist_connections": true
-    },
-    {
-      "type": "selector",
-      "tag": "规则之外",
-      "outbounds": [
-        "tag://手动选择",
-        "tag://自动选择",
-        "tag://香港优选",
-        "tag://美国优选",
-        "tag://日本优选",
-        "tag://新加坡优选",
-        "tag://台湾优选",
-        "tag://其他优选",
-        "include://(实验)",
-        "include://(高级)",
-        "include://(标准)",
-        "include://(港)",
-        "include://(美)",
-        "include://(日)",
-        "include://(新)",
         "include://(.*)",
         "tag://direct"
       ],
       "interrupt_exist_connections": true
     },
     {
-      "type": "urltest",
-      "tag": "香港优选",
+      "type": "selector",
+      "tag": "海外媒体",
       "outbounds": [
-        "include://(香港)"
+        "tag://手动选择",
+        "tag://自动选择",
+        "include://(.*)",
+        "tag://direct"
       ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "1m",
-      "tolerance": 50,
-      "interrupt_exist_connections": false
+      "interrupt_exist_connections": true
     },
     {
-      "type": "urltest",
-      "tag": "日本优选",
+      "type": "selector",
+      "tag": "兜底访问",
       "outbounds": [
-        "include://(日本)"
+        "tag://手动选择",
+        "tag://自动选择",
+        "tag://direct",
+        "include://(.*)"
       ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "1m",
-      "tolerance": 50,
-      "interrupt_exist_connections": false
-    },
-    {
-      "type": "urltest",
-      "tag": "新加坡优选",
-      "outbounds": [
-        "include://(新加坡)"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "1m",
-      "tolerance": 50,
-      "interrupt_exist_connections": false
-    },
-    {
-      "type": "urltest",
-      "tag": "台湾优选",
-      "outbounds": [
-        "include://(台湾)"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "1m",
-      "tolerance": 50,
-      "interrupt_exist_connections": false
-    },
-    {
-      "type": "urltest",
-      "tag": "美国优选",
-      "outbounds": [
-        "include://(美国)"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "1m",
-      "tolerance": 50,
-      "interrupt_exist_connections": false
-    },
-    {
-      "type": "urltest",
-      "tag": "其他优选",
-      "outbounds": [
-        "include://(^(?!.*[美日新台港]).+)"
-      ],
-      "url": "https://www.gstatic.com/generate_204",
-      "interval": "1m",
-      "tolerance": 50,
-      "interrupt_exist_connections": false
+      "interrupt_exist_connections": true
     },
     {
       "tag": "direct",
@@ -343,11 +198,7 @@
   ],
   "route": {
     "auto_detect_interface": true,
-    "final": "规则之外",
-    "default_domain_resolver": {
-      "server": "dnspod-dns",
-      "rewrite_ttl": 60
-    },
+    "final": "兜底访问",
     "rule_set": [
       {
         "download_detour": "手动选择",
@@ -404,6 +255,13 @@
         "tag": "geosite-onedrive",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/onedrive.srs"
+      },
+      {
+        "download_detour": "手动选择",
+        "format": "binary",
+        "tag": "geosite-github",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/github.srs"
       },
       {
         "download_detour": "手动选择",
@@ -471,6 +329,13 @@
       {
         "download_detour": "手动选择",
         "format": "binary",
+        "tag": "geosite-18comic",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/18comic.srs"
+      },
+      {
+        "download_detour": "手动选择",
+        "format": "binary",
         "tag": "geosite-!cn",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/geolocation-!cn.srs"
@@ -526,7 +391,8 @@
         "outbound": "手动选择",
         "rule_set": [
           "personal-proxy",
-          "personal-specify-proxy"
+          "personal-specify-proxy",
+          "geosite-18comic"
         ]
       },
       {
@@ -560,25 +426,21 @@
         "outbound": "Microsoft服务",
         "rule_set": [
           "geosite-microsoft",
+          "geosite-github",
           "geosite-onedrive"
         ]
       },
       {
-        "outbound": "Netflix服务",
+        "outbound": "海外媒体",
         "rule_set": [
           "geoip-netflix",
-          "geosite-netflix"
-        ]
-      },
-      {
-        "outbound": "Disney+服务",
-        "rule_set": [
+          "geosite-netflix",
           "geoip-netflix",
           "geosite-disney"
         ]
       },
       {
-        "outbound": "规则之外",
+        "outbound": "兜底访问",
         "rule_set": [
           "geosite-!cn"
         ]
