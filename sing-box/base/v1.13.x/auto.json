@@ -8,12 +8,14 @@
       {
         "type": "https",
         "tag": "google-dns",
-        "server": "8.8.8.8"
+        "server": "8.8.8.8",
+        "detour": "手动选择"
       },
       {
         "type": "https",
         "tag": "cloudflare-dns",
-        "server": "1.1.1.1"
+        "server": "1.1.1.1",
+        "detour": "手动选择"
       },
       {
         "type": "udp",
@@ -86,9 +88,6 @@
         "tag://新加坡优选",
         "tag://台湾优选",
         "tag://其他优选",
-        "include://(实验)",
-        "include://(高级)",
-        "include://(标准)",
         "include://(港)",
         "include://(美)",
         "include://(日)",
@@ -124,9 +123,6 @@
         "tag://新加坡优选",
         "tag://台湾优选",
         "tag://其他优选",
-        "include://(实验)",
-        "include://(高级)",
-        "include://(标准)",
         "include://(港)",
         "include://(美)",
         "include://(日)",
@@ -244,9 +240,6 @@
         "tag://新加坡优选",
         "tag://台湾优选",
         "tag://其他优选",
-        "include://(实验)",
-        "include://(高级)",
-        "include://(标准)",
         "include://(港)",
         "include://(美)",
         "include://(日)",
@@ -549,7 +542,9 @@
     ],
     "final": "规则之外",
     "auto_detect_interface": true,
-    "default_domain_resolver": "dnspod-dns"
+    "default_domain_resolver": {
+      "server": "dnspod-dns"
+    }
   },
   "experimental": {
     "cache_file": {

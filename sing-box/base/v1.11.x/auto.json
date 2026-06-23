@@ -20,14 +20,24 @@
   "dns": {
     "servers": [
       {
+        "address": "https://8.8.8.8/dns-query",
+        "detour": "手动选择",
+        "tag": "google-dns"
+      },
+      {
         "address": "https://1.1.1.1/dns-query",
         "detour": "手动选择",
-        "tag": "remote-dns"
+        "tag": "cloudflare-dns"
       },
       {
         "address": "119.29.29.29",
         "detour": "direct",
-        "tag": "local-dns"
+        "tag": "dnspod-dns"
+      },
+      {
+        "address": "119.29.29.29",
+        "detour": "direct",
+        "tag": "aliyun-dns"
       }
     ],
     "rules": [
@@ -35,7 +45,7 @@
         "rule_set": [
           "geosite-cn"
         ],
-        "server": "local-dns"
+        "server": "dnspod-dns"
       },
       {
         "rule_set": [
@@ -43,14 +53,14 @@
           "personal-specify-proxy",
           "geosite-!cn"
         ],
-        "server": "remote-dns"
+        "server": "google-dns"
       },
       {
         "outbound": "any",
-        "server": "local-dns"
+        "server": "dnspod-dns"
       }
     ],
-    "final": "remote-dns",
+    "final": "google-dns",
     "strategy": "ipv4_only"
   },
   "inbounds": [
@@ -98,9 +108,6 @@
         "tag://新加坡优选",
         "tag://台湾优选",
         "tag://其他优选",
-        "include://(实验)",
-        "include://(高级)",
-        "include://(标准)",
         "include://(港)",
         "include://(美)",
         "include://(日)",
@@ -137,9 +144,6 @@
         "tag://新加坡优选",
         "tag://台湾优选",
         "tag://其他优选",
-        "include://(实验)",
-        "include://(高级)",
-        "include://(标准)",
         "include://(港)",
         "include://(美)",
         "include://(日)",
@@ -257,9 +261,6 @@
         "tag://新加坡优选",
         "tag://台湾优选",
         "tag://其他优选",
-        "include://(实验)",
-        "include://(高级)",
-        "include://(标准)",
         "include://(港)",
         "include://(美)",
         "include://(日)",

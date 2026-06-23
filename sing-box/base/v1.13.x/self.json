@@ -8,12 +8,14 @@
       {
         "type": "https",
         "tag": "google-dns",
-        "server": "8.8.8.8"
+        "server": "8.8.8.8",
+        "detour": "手动选择"
       },
       {
         "type": "https",
         "tag": "cloudflare-dns",
-        "server": "1.1.1.1"
+        "server": "1.1.1.1",
+        "detour": "手动选择"
       },
       {
         "type": "udp",
@@ -403,7 +405,9 @@
     ],
     "final": "兜底访问",
     "auto_detect_interface": true,
-    "default_domain_resolver": "dnspod-dns"
+    "default_domain_resolver": {
+      "server": "dnspod-dns"
+    }
   },
   "experimental": {
     "cache_file": {

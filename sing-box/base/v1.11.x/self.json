@@ -20,14 +20,24 @@
   "dns": {
     "servers": [
       {
+        "address": "https://8.8.8.8/dns-query",
+        "detour": "手动选择",
+        "tag": "google-dns"
+      },
+      {
         "address": "https://1.1.1.1/dns-query",
         "detour": "手动选择",
-        "tag": "remote-dns"
+        "tag": "cloudflare-dns"
       },
       {
         "address": "119.29.29.29",
         "detour": "direct",
-        "tag": "local-dns"
+        "tag": "dnspod-dns"
+      },
+      {
+        "address": "119.29.29.29",
+        "detour": "direct",
+        "tag": "aliyun-dns"
       }
     ],
     "rules": [
@@ -35,7 +45,7 @@
         "rule_set": [
           "geosite-cn"
         ],
-        "server": "local-dns"
+        "server": "dnspod-dns"
       },
       {
         "rule_set": [
@@ -43,14 +53,14 @@
           "personal-specify-proxy",
           "geosite-!cn"
         ],
-        "server": "remote-dns"
+        "server": "google-dns"
       },
       {
         "outbound": "any",
-        "server": "local-dns"
+        "server": "dnspod-dns"
       }
     ],
-    "final": "remote-dns",
+    "final": "google-dns",
     "strategy": "ipv4_only"
   },
   "inbounds": [
@@ -91,15 +101,29 @@
       "type": "selector",
       "tag": "手动选择",
       "outbounds": [
-        "include://(实验)",
-        "include://(高级)",
-        "include://(标准)",
-        "include://(港)",
-        "include://(美)",
-        "include://(日)",
-        "include://(新)",
         "include://(.*)",
         "tag://direct"
+      ],
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "urltest",
+      "tag": "自动选择",
+      "outbounds": [
+        "include://(.*)"
+      ],
+      "url": "https://www.gstatic.com/generate_204",
+      "tolerance": 50,
+      "interrupt_exist_connections": false
+    },
+    {
+      "type": "selector",
+      "tag": "Apple服务",
+      "outbounds": [
+        "tag://direct",
+        "tag://手动选择",
+        "tag://自动选择",
+        "include://(.*)"
       ],
       "interrupt_exist_connections": true
     },
@@ -108,30 +132,40 @@
       "tag": "AI服务",
       "outbounds": [
         "tag://手动选择",
-        "include://(实验)",
-        "include://(高级)",
-        "include://(标准)",
-        "include://(港)",
-        "include://(美)",
-        "include://(日)",
-        "include://(新)",
+        "tag://自动选择",
+        "include://(.*)",
+        "tag://direct"
+      ],
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "selector",
+      "tag": "Google服务",
+      "outbounds": [
+        "tag://手动选择",
+        "tag://自动选择",
         "include://(.*)"
       ],
       "interrupt_exist_connections": true
     },
     {
       "type": "selector",
-      "tag": "指定代理",
+      "tag": "Telegram服务",
       "outbounds": [
         "tag://手动选择",
-        "include://(实验)",
-        "include://(高级)",
-        "include://(标准)",
-        "include://(港)",
-        "include://(美)",
-        "include://(日)",
-        "include://(新)",
+        "tag://自动选择",
         "include://(.*)"
+      ],
+      "interrupt_exist_connections": true
+    },
+    {
+      "type": "selector",
+      "tag": "Microsoft服务",
+      "outbounds": [
+        "tag://手动选择",
+        "tag://自动选择",
+        "include://(.*)",
+        "tag://direct"
       ],
       "interrupt_exist_connections": true
     },
@@ -140,29 +174,19 @@
       "tag": "海外媒体",
       "outbounds": [
         "tag://手动选择",
-        "include://(实验)",
-        "include://(高级)",
-        "include://(标准)",
-        "include://(港)",
-        "include://(美)",
-        "include://(日)",
-        "include://(新)",
-        "include://(.*)"
+        "tag://自动选择",
+        "include://(.*)",
+        "tag://direct"
       ],
       "interrupt_exist_connections": true
     },
     {
       "type": "selector",
-      "tag": "规则之外",
+      "tag": "兜底访问",
       "outbounds": [
         "tag://手动选择",
-        "include://(实验)",
-        "include://(高级)",
-        "include://(标准)",
-        "include://(港)",
-        "include://(美)",
-        "include://(日)",
-        "include://(新)",
+        "tag://自动选择",
+        "tag://direct",
         "include://(.*)"
       ],
       "interrupt_exist_connections": true
@@ -174,7 +198,7 @@
   ],
   "route": {
     "auto_detect_interface": true,
-    "final": "规则之外",
+    "final": "兜底访问",
     "rule_set": [
       {
         "download_detour": "手动选择",
@@ -231,6 +255,13 @@
         "tag": "geosite-onedrive",
         "type": "remote",
         "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/onedrive.srs"
+      },
+      {
+        "download_detour": "手动选择",
+        "format": "binary",
+        "tag": "geosite-github",
+        "type": "remote",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/sing/geo/geosite/github.srs"
       },
       {
         "download_detour": "手动选择",
@@ -361,9 +392,6 @@
         "rule_set": [
           "personal-proxy",
           "personal-specify-proxy",
-          "geoip-google",
-          "geosite-google",
-          "geosite-microsoft",
           "geosite-18comic"
         ]
       },
@@ -374,11 +402,37 @@
         ]
       },
       {
-        "outbound": "海外媒体",
+        "outbound": "Apple服务",
+        "rule_set": [
+          "geosite-apple"
+        ]
+      },
+      {
+        "outbound": "Google服务",
         "rule_set": [
           "geosite-youtube",
+          "geoip-google",
+          "geosite-google"
+        ]
+      },
+      {
+        "outbound": "Telegram服务",
+        "rule_set": [
           "geoip-telegram",
-          "geosite-telegram",
+          "geosite-telegram"
+        ]
+      },
+      {
+        "outbound": "Microsoft服务",
+        "rule_set": [
+          "geosite-microsoft",
+          "geosite-github",
+          "geosite-onedrive"
+        ]
+      },
+      {
+        "outbound": "海外媒体",
+        "rule_set": [
           "geoip-netflix",
           "geosite-netflix",
           "geoip-netflix",
@@ -386,7 +440,7 @@
         ]
       },
       {
-        "outbound": "规则之外",
+        "outbound": "兜底访问",
         "rule_set": [
           "geosite-!cn"
         ]
@@ -395,9 +449,6 @@
         "outbound": "direct",
         "rule_set": [
           "personal-direct",
-          "geosite-apple",
-          "geosite-bilibili",
-          "geosite-onedrive",
           "geosite-cn",
           "geoip-cn"
         ]
