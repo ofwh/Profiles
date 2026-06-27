@@ -1,0 +1,13 @@
+#!name=18comic
+#!desc=屏蔽18comic部分广告
+#!icon=https://raw.githubusercontent.com/ofwh/Profiles/main/Loon/Icons/CheLaiLe.webp
+
+[Rule]
+URL-REGEX,^https://([^/]*)\/ad-provider\.js, REJECT
+
+[Script]
+http-response ^https?:\/\/18comic\.(vip|org)\/(?!(.*(onclick|cdn-cgi|verify|auth|captch|\.))).* script-path=https://limbopro.com/Adguard/Adblock4limbo.js, requires-body=true, tag=禁漫天堂去广告
+
+
+[MitM]
+hostname = 18comic.vip,18comic.org
