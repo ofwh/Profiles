@@ -1,10 +1,27 @@
+#!name=车来了
+#!desc=屏蔽车来了微信小程序广告
+#!icon=https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/35/76/d4/3576d456-c9de-cd42-c39e-2f9a2e046381/Placeholder.mill/200x200bb-75.png
+
 [URL Rewrite]
-^https?://pic1.chelaile.net.cn/adv/ - REJECT
-^https?://(api|atrace)\.chelaile\.net\.cn/adpub/ - REJECT
-^https?://api\.chelaile\.net\.cn/goocity/advert/ - REJECT
-^https?://atrace\.chelaile\.net\.cn/adpub/ - REJECT-IMG
-^https?://atrace\.chelaile\.net\.cn/exhibit\?&adv_image - REJECT-IMG
-^https?://web\.chelaile\.net\.cn/api/adpub/ - REJECT
+^https?://atrace\.chelaile\.net\.cn - REJECT
+^https?://logs\.chelaile\.net\.cn - REJECT
+^https?://ad\.chelaile\.net\.cn - REJECT
+^https?://web\.chelaile\.net\.cn/adpub - REJECT
+^https?://web\.chelaile\.net\.cn/api/adpub - REJECT
+^https?://cdn\.chelaile\.net\.cn/adpub - REJECT
+^https?://cdn\.chelaile\.net\.cn/api/adpub - REJECT
+^https?://cdn\.web\.chelaileapp\.cn/adpub - REJECT
+^https?://cdn\.web\.chelaileapp\.cn/api/adpub - REJECT
+^https?://cdn\.api\.chelaile\.net\.cn/adpub - REJECT
+^https?://cdn\.api\.chelaile\.net\.cn/api/adpub - REJECT
+^https?://cdn\.api\.chelaileapp\.cn/adpub - REJECT
+^https?://cdn\.api\.chelaileapp\.cn/api/adpub - REJECT
+^https?://124\.70\.194\.16/adpub - REJECT
+^https?://124\.70\.194\.16/api/adpub - REJECT
+
+
+[Script]
+
 
 [MITM]
-hostname = %APPEND% *.chelaile.net.cn
+hostname = %APPEND% *.chelaile.net.cn, *.chelaileapp.cn

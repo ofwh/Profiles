@@ -1,3 +1,7 @@
+#!name=高德地图去广告
+#!desc=高德地图去广告
+#!icon=https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/13/a3/1d/13a31d79-a90d-b706-c0c6-28f471ad77cc/Placeholder.mill/200x200bb-75.png
+
 [URL Rewrite]
 ^https?+://m\d\.amap\.com/ws/valueadded/alimama/splash_screen/ - REJECT-200
 ^https?://m5\.amap\.com/ws/valueadded/ - REJECT
@@ -10,16 +14,16 @@
 ^https?:\/\/.*\.amap\.com\/ws\/valueadded\/weather - REJECT-DICT
 
 [Script]
-AMap = type=http-response,script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^http:\/\/amdc\.m\.taobao\.com
-AMap = type=http-response,script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/message\/notice\/list
-AMap = type=http-response,script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable
-AMap = type=http-response,script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/nearbyrec_smart
-AMap = type=http-response,script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/promotion-web\/resource
-AMap = type=http-response,script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page
-AMap = type=http-response,script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/valueadded\/alimama\/splash_screen
-AMap = type=http-response,script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/msgbox\/pull
-AMap = type=http-response,script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaas
-AMap = type=http-response,script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js,max-size=131072,requires-body=true,timeout=10,enable=true,pattern=^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/new_hotword
+AMap = type=http-response, script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js, max-size=131072, requires-body=true, timeout=10, enable=true, pattern=^http:\/\/amdc\.m\.taobao\.com
+AMap = type=http-response, script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js, max-size=131072, requires-body=true, timeout=10, enable=true, pattern=^https?:\/\/.*\.amap\.com\/ws\/message\/notice\/list
+AMap = type=http-response, script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js, max-size=131072, requires-body=true, timeout=10, enable=true, pattern=^https?:\/\/.*\.amap\.com\/ws\/shield\/frogserver\/aocs\/updatable
+AMap = type=http-response, script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js, max-size=131072, requires-body=true, timeout=10, enable=true, pattern=^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/nearbyrec_smart
+AMap = type=http-response, script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js, max-size=131072, requires-body=true, timeout=10, enable=true, pattern=^https?:\/\/.*\.amap\.com\/ws\/promotion-web\/resource
+AMap = type=http-response, script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js, max-size=131072, requires-body=true, timeout=10, enable=true, pattern=^https?:\/\/.*\.amap\.com\/ws\/faas\/amap-navigation\/main-page
+AMap = type=http-response, script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js, max-size=131072, requires-body=true, timeout=10, enable=true, pattern=^https?:\/\/.*\.amap\.com\/ws\/valueadded\/alimama\/splash_screen
+AMap = type=http-response, script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js, max-size=131072, requires-body=true, timeout=10, enable=true, pattern=^https?:\/\/.*\.amap\.com\/ws\/msgbox\/pull
+AMap = type=http-response, script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js, max-size=131072, requires-body=true, timeout=10, enable=true, pattern=^https?:\/\/.*\.amap\.com\/ws\/shield\/dsp\/profile\/index\/nodefaas
+AMap = type=http-response, script-path=https://raw.bofoi.com/assets/ofwh/Profiles/main/Shadowrocket/Scripts/AMap.js, max-size=131072, requires-body=true, timeout=10, enable=true, pattern=^https?:\/\/.*\.amap\.com\/ws\/shield\/search\/new_hotword
 
 [MITM]
-hostname = %APPEND% *.amap.com
+hostname = %APPEND% *.amap.com, *.m.taobao.com
