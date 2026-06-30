@@ -1,13 +1,13 @@
-#!name=18comic
-#!desc=屏蔽18comic部分广告
-#!icon=https://raw.githubusercontent.com/ofwh/Profiles/main/Loon/Icons/CheLaiLe.webp
+#!name=禁漫天堂
+#!desc=屏蔽禁漫天堂部分广告
+#!icon=https://raw.githubusercontent.com/ofwh/Profiles/main/Loon/Icons/18comic.png
 
 [Rule]
 URL-REGEX,^https://([^/]*)\/ad-provider\.js, REJECT
+URL-REGEX,^https://18comic\.(vip|org)\/cdn-cgi\/rum, REJECT
 
 [Script]
-http-response ^https?:\/\/18comic\.(vip|org)\/(?!(.*(onclick|cdn-cgi|verify|auth|captch|\.))).* script-path=https://limbopro.com/Adguard/Adblock4limbo.js, requires-body=true, tag=禁漫天堂去广告
-
+http-response ^https?:\/\/18comic\.(vip|org)\/.* script-path=https://raw.githubusercontent.com/ofwh/Profiles/main/Loon/Scripts/18comic.js, requires-body=true, tag=禁漫天堂去广告
 
 [MitM]
 hostname = 18comic.vip,18comic.org
