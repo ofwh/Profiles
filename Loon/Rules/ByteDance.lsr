@@ -1,0 +1,176 @@
+#Bytedance
+DOMAIN-SUFFIX, dm.bytedance.com
+DOMAIN-SUFFIX, mssdk.bytedance.com
+#DOMAIN, tnc3-aliec2.bytedance.com
+#DOMAIN, tnc3-alisc1.bytedance.com
+#DOMAIN, tnc3-bjlgy.bytedance.com
+DOMAIN, mssdk-bu.bytedance.com
+DOMAIN, rtc-log-report.bytedance.com
+
+#Bytedance-amemv
+DOMAIN, api5-normal-c-lq.amemv.com
+DOMAIN, bytelink100-ws.amemv.com
+DOMAIN, log.amemv.com
+DOMAIN, mon11-misc.amemv.com
+
+#Bytedance-pstatp
+DOMAIN-SUFFIX, dm.pstatp.com
+DOMAIN-SUFFIX, pb3.pstatp.com
+DOMAIN-SUFFIX, s3.pstatp.com
+DOMAIN-SUFFIX, s3a.pstatp.com
+DOMAIN-KEYWORD, -tos.pstatp.com
+
+#Bytedance-snssdk
+DOMAIN, abtest-ch.snssdk.com
+DOMAIN, ecomuser.snssdk.com
+DOMAIN, gecko.snssdk.com
+DOMAIN, toblog.ctobsnssdk.com
+DOMAIN-SUFFIX, applog.snssdk.com
+DOMAIN-SUFFIX, bds.snssdk.com
+DOMAIN-SUFFIX, extlog.snssdk.com
+DOMAIN-SUFFIX, mcs.snssdk.com
+DOMAIN-SUFFIX, pangolin-hl.snssdk.com
+DOMAIN-SUFFIX, pangolin-lf.snssdk.com
+DOMAIN-SUFFIX, pangolin-lq.snssdk.com
+DOMAIN-SUFFIX, sdfp.snssdk.com
+DOMAIN-SUFFIX, toblog.snssdk.com
+DOMAIN-KEYWORD, pangolin.snssdk.com
+DOMAIN-KEYWORD, video-cn.snssdk.com
+#DOMAIN, i.snssdk.com
+#DOMAIN, ib.snssdk.com
+#DOMAIN, ic.snssdk.com
+#DOMAIN, is.snssdk.com
+#DOMAIN, log.snssdk.com
+#DOMAIN, mcs.snssdk.com
+#DOMAIN, tnc3-aliec2.snssdk.com
+#DOMAIN, tnc3-alisc1.snssdk.com
+#DOMAIN, tnc3-bjlgy.snssdk.com
+#DOMAIN, vcs.snssdk.com
+#DOMAIN, verify.snssdk.com
+
+#Bytedance-toutiao.com
+DOMAIN-SUFFIX, ad.toutiao.com
+DOMAIN-SUFFIX, dm.toutiao.com
+DOMAIN-SUFFIX, dsp.toutiao.com
+DOMAIN-SUFFIX, mon.toutiao.com
+DOMAIN, dm-hl.toutiao.com
+DOMAIN, zhanzhang.toutiao.com
+DOMAIN, zlink.toutiao.com
+
+#Bytedance-toutiao-?
+#DOMAIN-KEYWORD, pangolin-sdk-toutiao
+#DOMAIN-KEYWORD, pglstatp-toutiao
+DOMAIN, log3-normal-lq.toutiaoapi.com
+DOMAIN, log3-normal.toutiaoapi.com
+DOMAIN, mon11-misc-lq.toutiaoapi.com
+#DOMAIN, tnc3-aliec1.toutiaoapi.com
+#DOMAIN, tnc3-aliec2.toutiaoapi.com
+#DOMAIN, tnc3-alisc1.toutiaoapi.com
+#DOMAIN, tnc3-bjlgy.toutiaoapi.com
+DOMAIN, mon.toutiaocloud.com
+DOMAIN, mon.toutiaocloud.net
+DOMAIN-SUFFIX, pangolin-dsp-toutiao.com
+DOMAIN-SUFFIX, pangolin-sdk-toutiao.com
+DOMAIN-SUFFIX, panplayable-toutiao.com
+DOMAIN-SUFFIX, pglstatp-sdk-toutiao.com
+DOMAIN-SUFFIX, pglstatp-snssdk-toutiao.com
+DOMAIN-SUFFIX, pglstatp-toutiao.com
+DOMAIN-SUFFIX, pangolin-sdk-toutiao1.com
+DOMAIN-SUFFIX, pangolin-dsp-toutiao-b.com
+DOMAIN-SUFFIX, pangolin-sdk-toutiao-b.com
+DOMAIN-SUFFIX, panplayable-toutiao-b.com
+DOMAIN-SUFFIX, pglstatp-toutiao-b.com
+
+#Bytedance-Union
+DOMAIN-SUFFIX, byteadverts.com
+DOMAIN-SUFFIX, csjplatform.com
+DOMAIN-SUFFIX, ctobsnssdk.com
+DOMAIN-SUFFIX, oceanengine.com
+DOMAIN-SUFFIX, pangle.io
+DOMAIN-SUFFIX, shoppingads.cn
+DOMAIN-SUFFIX, volcsirius.com
+DOMAIN-SUFFIX, volcsiriusbd.com
+DOMAIN-SUFFIX, tosv.boe.byted.org
+DOMAIN-SUFFIX, tosv.byted.org
+DOMAIN-SUFFIX, dig.bdurl.net
+DOMAIN-KEYWORD, -ad.byteoversea.com
+DOMAIN-KEYWORD, ad-sign.byteimg.com
+DOMAIN-KEYWORD, adbrand.byteimg.com
+DOMAIN-KEYWORD, analytics.bytescm.com
+DOMAIN-KEYWORD, asiad.byteactivity
+DOMAIN-KEYWORD, pangolin
+DOMAIN-KEYWORD, pglstatp
+DOMAIN-KEYWORD, panplayable-toutiao
+
+#Bytedance-抖音
+DOMAIN-KEYWORD, tt.x.bsgslb.cn
+DOMAIN, apmplus.volces.com
+DOMAIN, mssdk.volces.com
+#导致nike app卡在启动界面
+#DOMAIN, gator.volces.com
+DOMAIN, log-report.rtc.volcvideo.com
+DOMAIN, lf-ad-ies.bytecdn.cn
+DOMAIN, lf-leads-fe-scm.bytecdn.com
+DOMAIN, lf1-cdn-tos.bytegoofy.com
+
+#Bytedance-TikTok
+DOMAIN-SUFFIX, adsintegrity.net
+DOMAIN-SUFFIX, ads-api.tiktok.com
+DOMAIN-SUFFIX, ads-sg.tiktok.com
+DOMAIN-SUFFIX, ads.tiktok.com
+DOMAIN-SUFFIX, analytics-sg.tiktok.com
+DOMAIN-SUFFIX, analytics.tiktok.com
+DOMAIN-SUFFIX, business-api.tiktok.com
+DOMAIN-SUFFIX, log.byteoversea.com
+DOMAIN-SUFFIX, pangolin16.sgsnssdk.com
+
+#Bytedance-番茄小说
+DOMAIN-KEYWORD, applog-hl.fqnovel.com
+DOMAIN-KEYWORD, applog-lq.fqnovel.com
+DOMAIN-KEYWORD, applog.fqnovel.com
+DOMAIN-KEYWORD, novelapp.fqnovelvod.com
+
+#Bytedance-番茄畅听
+DOMAIN-KEYWORD, applog-hl.novelfm.com
+DOMAIN-KEYWORD, applog.novelfm.com
+
+#Bytedance-西瓜视频
+DOMAIN-KEYWORD, applog-lf.ixigua.com
+DOMAIN-KEYWORD, applog-lq.ixigua.com
+
+#Bytedance-zijieapi
+DOMAIN, ad.zijieapi.com
+DOMAIN, ads3-normal-hl.zijieapi.com
+DOMAIN, ads3-normal-lq.zijieapi.com
+DOMAIN, ads3-normal.zijieapi.com
+DOMAIN, ads5-normal-hl.zijieapi.com
+DOMAIN, ads5-normal-lq.zijieapi.com
+DOMAIN, ads5-normal.zijieapi.com
+DOMAIN, applog.zijieapi.com
+DOMAIN, feedback-c.zijieapi.com
+DOMAIN, gecko.zijieapi.com
+DOMAIN, mcs.zijieapi.com
+DOMAIN, minigame3-normal.zijieapi.com
+DOMAIN, minigame5-normal-hl.zijieapi.com
+DOMAIN, minigame5-normal-lq.zijieapi.com
+DOMAIN, minigame5-normal.zijieapi.com
+DOMAIN, mon.zijieapi.com
+DOMAIN, mssdk.zijieapi.com
+DOMAIN, polaris.zijieapi.com
+DOMAIN, polaris3-normal-hl.zijieapi.com
+DOMAIN, polaris3-normal-lq.zijieapi.com
+DOMAIN, polaris5-normal-hl.zijieapi.com
+DOMAIN, polaris5-normal-lf.zijieapi.com
+DOMAIN, privacy.zijieapi.com
+DOMAIN, security.zijieapi.com
+DOMAIN, starkgame.zijieapi.com
+DOMAIN, timon.zijieapi.com
+DOMAIN, view.zijieapi.com
+DOMAIN-SUFFIX, log.zijieapi.com
+#DOMAIN, tnc0-aliec2.zijieapi.com
+#DOMAIN, tnc0-alisc1.zijieapi.com
+#DOMAIN, tnc0-bjlgy.zijieapi.com
+#DOMAIN, tnc3-aliec2.zijieapi.com
+#DOMAIN, tnc3-alisc1.zijieapi.com
+#DOMAIN, tnc3-alisc2.zijieapi.com
+#DOMAIN, tnc3-bjlgy.zijieapi.com
