@@ -1,0 +1,22 @@
+#!name=零碎规则
+#!desc=未分类的零碎规则
+#!author=Developers
+#!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Puzzle.png
+#!date=2026-07-16
+
+[Rewrite]
+# 可莉仓库解除 UA 限制 //kelee.one
+https:\/\/(rule\.)?kelee\.one\/ header-replace 'user-agent' 'Loon/786 CFNetwork/1568.200.51 Darwin/24.1.0'
+https:\/\/(rule\.)?kelee\.one\/ response-header-add 'content-disposition' 'inline'
+https:\/\/(rule\.)?kelee\.one\/ response-header-replace 'content-type' 'text/plain; charset=utf-8'
+
+[Script]
+# 黑料网 //18hlw.com, 8olbt.imsatcmn.cc
+http-response ^https:\/\/(?:18hlw\.com|8olbt\.imsatcmn\.cc)\/ script-path=https://github.com/ifflagged/Romeo/raw/main/Modules/JavaScript/rucu6/webpage/rucu6.pages.dev_myblockads.js, requires-body=true, timeout=10, tag=去广告
+# MissAV //missav.ai, missav.fans, missav.ws
+http-response ^https:\/\/missav\.(?:ai|fans|ws)\/(?!favicon)(?!(build|fonts|img|js|api|cdn-cgi)\/). script-path=https://github.com/ifflagged/Romeo/raw/main/Modules/JavaScript/rucu6/webpage/rucu6.pages.dev_missav.js, requires-body=true, timeout=10, tag=去广告
+# PornHub //*.pornhub.com
+http-response ^https:\/\/cn\.pornhub\.com\/ script-path=https://github.com/ifflagged/Romeo/raw/main/Modules/JavaScript/rucu6/webpage/rucu6.pages.dev_pornhub.js, requires-body=true, timeout=10, tag=去广告
+
+[MITM]
+hostname = kelee.one, *.kelee.one, 18hlw.com, *.imsatcmn.cc, missav.ai, missav.fans, missav.ws
