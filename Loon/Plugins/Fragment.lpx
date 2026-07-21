@@ -1,14 +1,16 @@
-#!name=零碎规则
+#!name=自用规则
 #!desc=未分类的零碎规则
 #!author=Developers
-#!icon=https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Puzzle.png
-#!date=2026-07-16
+#!icon=https://raw.githubusercontent.com/ofwh/Profiles/main/Loon/Icons/AdBlock.png
+#!date=2026-07-20
 
 [Rewrite]
 # 可莉仓库解除 UA 限制 //kelee.one
-^https?:\/\/(rule\.)?kelee\.one\/ header-replace User-Agent Loon/786\x20CFNetwork/1568.200.51\x20Darwin/24.1.0
-^https?:\/\/(rule\.)?kelee\.one\/ response-header-add Content-Disposition inline
-^https?:\/\/(rule\.)?kelee\.one\/ response-header-replace Content-Type text/plain;\x20charset=utf-8
+^https?://(.*)?kelee.one header-replace User-Agent Loon/786\x20CFNetwork/1568.200.51\x20Darwin/24.1.0
+^https?://(rule\.)?kelee.one response-header-add Content-Disposition inline
+^https?://(rule\.)?kelee.one response-header-replace Content-Type text/plain;\x20charset=utf-8
+# Bejeweled 3 广告
+^https?://(.*)?popcap.com response-body-json-replace ads []
 
 [Script]
 # 黑料网 //18hlw.com, 8olbt.imsatcmn.cc
@@ -19,4 +21,4 @@ http-response ^https:\/\/missav\.(?:ai|fans|ws)\/(?!favicon)(?!(build|fonts|img|
 http-response ^https:\/\/cn\.pornhub\.com\/ script-path=https://github.com/ifflagged/Romeo/raw/main/Modules/JavaScript/rucu6/webpage/rucu6.pages.dev_pornhub.js, requires-body=true, timeout=10, tag=去广告
 
 [MITM]
-hostname = kelee.one,*.kelee.one,18hlw.com,*.imsatcmn.cc,missav.ai,missav.fans,missav.ws
+hostname = kelee.one,*.kelee.one,18hlw.com,*.imsatcmn.cc,missav.ai,missav.fans,missav.ws,*.popcap.com
